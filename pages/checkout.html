@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máquinas Madeira</title>
+
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+    <header class="cabecalho__sistema">
+        <div class="cabecalho__link_sistema">
+            <a class="link__sistema" href="../backend/system.html">SISTEMA</a>
+        </div>
+        <div class="cabecalho">
+            <h1 class="logo__cabecalho">Máquinas Madeira</h1>
+            <nav>
+                <ul>
+                    <li></li>
+                    <a href="../pages/index.html">Início</a>
+                    <a href="#">Produtos</a>
+                    <a href="../pages/cart.html">Carrinho</a>
+                    <a href="#">Contato</a>
+                </ul>
+            </nav>
+        </div>    
+    </header>
+
+    <main>
+        <section >
+            <h2>Checkout</h2>
+            <div></div>
+                <div id="checkoutLista"></div>
+                <p><strong>Valor Total:</strong> R$<span id="checkoutTotal">0.00</span></p>
+                <button onclick="finalizarCompra()">Finalizar Compra</button>
+                <button onclick="voltarParaLoja()">Voltar para Loja</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Máquinas Madeira. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

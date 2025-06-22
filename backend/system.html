@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+    <link rel="stylesheet" href="../backend/styles.css">
+</head>
+<body>
+    <header>
+        <div class="cabecalho__link_sistema">
+            <a class="link__sistema" href="../pages/index.html">LOJA</a>
+        </div>
+    </header>
+
+    <h1>Painel do Administrador</h1>
+    <button onclick="adicionarProduto()">Adicionar Produto</button>
+    <div id="produtos"></div>
+    <h2>Adicionar Novo Produto</h2>
+<form id="formProduto">
+    <input type="text" id="nome" placeholder="Nome do Produto" required>
+    <input type="text" id="descricao" placeholder="Descrição" required>
+    <input type="number" id="preco" placeholder="Preço" required>
+    <input type="number" id="frete" placeholder="Frete" required>
+    <input type="text" id="imagem" placeholder="URL da Imagem" required>
+    <button type="submit">Cadastrar Produto</button>
+</form>
+
+<h2>Editar Produto</h2>
+<form id="formEdicao" style="display: none;">
+    <input type="hidden" id="produtoId">
+    <input type="text" id="editNome" placeholder="Nome do Produto" required>
+    <input type="text" id="editDescricao" placeholder="Descrição" required>
+    <input type="number" id="editPreco" placeholder="Preço" required>
+    <input type="number" id="editFrete" placeholder="Frete" required>
+    <input type="text" id="editImagem" placeholder="URL da Imagem" required>
+    <button type="submit">Salvar Alterações</button>
+    <button type="button" onclick="cancelarEdicao()">Cancelar</button>
+</form>
+
+    <script src="../backend/script.js"></script>
+</body>
+</html>

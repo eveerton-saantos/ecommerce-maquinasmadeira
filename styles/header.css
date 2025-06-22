@@ -1,0 +1,10 @@
+@import url(../styles/style.css);
+
+.header {
+    padding: 2em 1em;
+    background-color: var(--laranja);
+}
+
+.logo-img {
+    padding: 1.25em;
+}

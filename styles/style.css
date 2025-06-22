@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url(./header.css);
+
+/* VARIÁVEIS */
+:root {
+    --preto: #000;
+    --branco: #fff;
+    --azul-escuro: #1221aa;
+    --laranja: #d35719;
+    --poppins: "Poppins", sans-serif; 
+}
+
+body {
+    font-family: var(--poppins);
+}
+
+a {
+    text-decoration: none;
+    color: var(--branco);
+}
+
+/* ============= HEADER SISTEMA =============== */
+
+.cabecalho__link_sistema {
+    background-color: var(--preto);
+    display: flex;
+    justify-content: space-around;
+    padding: 1em 1em;
+}
+
+.link__sistema {
+    color: var(--branco);
+    text-decoration: none;
+}
+
+/* ================================================ */
+
+.cabecalho__sistema {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+main {
+    padding: 2em 2em;
+}
+
+#listaProdutos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.produto {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+}
+
+.produto-imagem {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: #218838;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máquinas Madeira: Tudo em máquinas e ferramentas.</title>
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-link-system">
+            <a class="link-system" href="../backend/system.html">SISTEMA</a>
+        </div>
+        <div class="header-page">
+            <a href="./index.html">
+                <img src="../assets/Logo Branco.svg" class="logo-img" alt="Logo do Site Máquinas Madeira">
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../pages/index.html">Início</a>
+                        <a href="#">Produtos</a>
+                        <a href="../pages/cart.html">Carrinho</a>
+                        <a href="#">Contato</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>    
+    </header>
+
+    <main>
+        <section>
+            <div id="listaProdutos"></div>
+                <h2>Produtos Disponíveis</h2>
+                <div id="listaProdutos"></div>
+                    <div id="listaProdutos">
+                        <template id="produtoTemplate">
+                            <div class="produto">
+                                <a href="">
+                                    <img class="produto-imagem" src="" alt="">
+                                    <h3 class="produto-nome"></h3>
+                                </a>
+                                <p class="produto-descricao"></p>
+                                <p><strong>Preço:</strong> R$<span class="produto-preco"></span></p>
+                                <button class="btn-add">Adicionar ao Carrinho</button>
+                            </div>
+                        </template>
+                    </div>
+        </section>
+        <section>
+            <template id="produtoTemplate">
+                <div class="produto">
+                    <a href="">
+                    <img class="produto-imagem" src="" alt="">
+                    <h3 class="produto-nome"></h3>
+                    </a>
+                    <p class="produto-descricao"></p>
+                    <p><strong>Preço:</strong> R$<span class="produto-preco"></span></p>
+                    <button class="btn-add">Adicionar ao Carrinho</button>
+                </div>
+            </template>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Máquinas Madeira. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
