@@ -6,6 +6,23 @@ O formato segue os princípios de versionamento semântico: MAJOR.MINOR.PATCH
 
 ---
 
+## [1.1.0] - 2025-06-29
+
+### Adicionado
+- Novos arquivos CSS para componentes específicos: `cart.css`, `footer.css`, `product.css`, `style-system.css`
+- Ícone da bandeira do Brasil para identificar idioma ou localização
+
+### Alterado
+- Refatoração do `script.js` com uso de `data-*` attributes e nova função `editarViaDataset()`, resolvendo bug na edição do primeiro produto
+- Lógica de truncamento de descrição adicionada via JavaScript (`limitarDescricaoProdutos`)
+- Organização dos estilos separando `header.css`, `footer.css` e removendo `styles.css` antigo
+- Melhoria na exibição visual dos produtos no painel (cards responsivos com descrições compactadas)
+
+### Corrigido
+- Bug que impedia a edição do primeiro produto no dashboard por quebra de string no `onclick`
+
+---
+
 ## [1.0.0] - 2025-06-22
 
 ### Adicionado
