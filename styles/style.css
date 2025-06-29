@@ -1,17 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url(./header.css);
+@import url(./cart.css);
+@import url(./product.css);
+@import url(./footer.css);
 
 /* VARIÁVEIS */
 :root {
     --preto: #000;
+    --cinza-borda: #ccc;
+    --cinza: #f3f3f3;
     --branco: #fff;
     --azul-escuro: #1221aa;
-    --laranja: #d35719;
-    --poppins: "Poppins", sans-serif; 
+    --laranja: #dd520c;
+    --poppins: "Poppins", sans-serif;
+    --background: #f0f0f0;
+    --background-footer: #e4e3e3;
+    --verde: #14a307;
+    --verde-escuro: #005307;
 }
 
 body {
     font-family: var(--poppins);
+    background-color: var(--background);
 }
 
 a {
@@ -42,23 +52,29 @@ a {
 }
 
 main {
-    padding: 2em 2em;
+    padding: 10em 2em;
 }
 
-#listaProdutos {
+.list-product {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    padding: 1em 1.5em;
+    gap: 10px;
+}
+
+.list-offers-title {
+    padding: 0.75em 1.25em;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--preto);
 }
 
 .produto {
-    background-color: white;
+    background-color: var(--branco);
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     width: 250px;
-    text-align: center;
 }
 
 .produto-imagem {
@@ -67,16 +83,42 @@ main {
     border-radius: 8px;
 }
 
-button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+.produto-nome {
+    font-weight: 500;
+    font-size: 1em;
+    color: var(--preto);
+    padding: 1em 0;
+}
+
+.produto-descricao {
+    display: none;
+}
+
+.produto-preco {
+    color: var(--laranja);
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.product-advance-payment {
+    color: var(--verde);
+    font-weight: 400;
+    font-size: 0.75em;
     margin-top: 5px;
 }
 
-button:hover {
+.btn-add {
+    background-color: #28a745;
+    color: white;
+    padding: 1em 2.5em;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    margin-top: 1em;
+}
+
+.btn-add:hover {
     background-color: #218838;
 }

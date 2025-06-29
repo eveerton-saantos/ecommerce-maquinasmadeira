@@ -10,37 +10,61 @@
 </head>
 <body>
 
-    <header class="cabecalho__sistema">
-        <div class="cabecalho__link_sistema">
-            <a class="link__sistema" href="../backend/system.html">SISTEMA</a>
+    <header class="header">
+        <div class="header-link-system">
+            <a class="link-system" href="../backend/system.html">SISTEMA</a>
         </div>
-        <div class="cabecalho">
-            <h1 class="logo__cabecalho">Máquinas Madeira</h1>
-            <nav>
-                <ul>
-                    <li></li>
-                    <a href="../pages/index.html">Início</a>
-                    <a href="#">Produtos</a>
-                    <a href="../pages/cart.html">Carrinho</a>
-                    <a href="#">Contato</a>
-                </ul>
-            </nav>
-        </div>    
+        <div class="header-page">
+            <a href="./index.html">
+                <img src="../assets/Logo Branco.svg" class="logo-img" alt="Logo do Site Máquinas Madeira">
+            </a>
+        </div>
+        <nav class="header-nav">
+            <ul>
+                <li>
+                    <a class="header-nav-link" href="../pages/index.html">Início</a>
+                    <a class="header-nav-link" href="../pages/cart.html">Carrinho</a>
+                </li>
+            </ul>
+        </nav>  
     </header>
 
     <main>
-        <div>
-            <h2 id="produtoNome"></h2>
-            <img id="produtoImagem" alt="Imagem do produto">
-            <p id="produtoDescricao"></p>
-            <p><strong>Preço:</strong> R$<span id="produtoPreco"></span></p>
-            <button id="btnAdicionar" onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
-            <button onclick="VoltarParaLoja()">Comprar Agora</button>
-        </div>
+        <section class="presentation-product-page">
+            <div class="product-title-img product-background">
+                <div>
+                    <h2 class="product-title" id="produtoNome"></h2>
+                    <img class="product-image" id="produtoImagem" alt="Imagem do produto">
+                </div>
+                <div class="info-product" >
+                    <p>vendido e entregue por máquinas<strong>madeira</strong></p>
+                    <p class="price-product"><strong>R$ </strong><span id="produtoPreco"></span></p>
+                    <button class="btn-product" id="btnAdicionar" onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
+                    <button class="btn-product" onclick="comprarAgora()">Comprar Agora</button>
+                </div>
+            </div>
+            <div class="product-description product-background">
+                <h3 class="description-title">Descrição:</h3>
+                <p id="produtoDescricao"></p>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Máquinas Madeira. Todos os direitos reservados.</p>
+    <footer class="footer">
+        <ul>
+            <li class="footer-list">
+                <a class="footer-link" href="#">Atendimento</a>
+                <a class="footer-link" href="#">Central de ajuda</a>
+                <a class="footer-link" href="#">Troca e Devolução</a>
+                <a class="footer-link" href="#">Quem somos</a>
+                <a class="footer-link" href="#">Segurança</a>
+                <a class="footer-link" href="#">Entrega</a>
+            </li>
+        </ul>
+        <div class="footer-container">
+            <p class="footer-copy">&copy; 2025 Máquinas Madeira. Todos os direitos reservados.</p>
+            <p class="footer-busyness"><img class="footer-icon-brazil" src="../assets/brazil-icon.png" alt="Brandeira do Brasil">EMPRESA 100% BRASILEIRA. </p>
+        </div>
     </footer>
 
     <script src="../js/product.js"></script>

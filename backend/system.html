@@ -4,39 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin</title>
-    <link rel="stylesheet" href="../backend/styles.css">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/style-system.css">
 </head>
 <body>
-    <header>
-        <div class="cabecalho__link_sistema">
-            <a class="link__sistema" href="../pages/index.html">LOJA</a>
+    <header class="header">
+        <div class="header-system-link">
+            <a class="link-system" href="../pages/index.html">LOJA</a>
         </div>
     </header>
 
-    <h1>Painel do Administrador</h1>
-    <button onclick="adicionarProduto()">Adicionar Produto</button>
-    <div id="produtos"></div>
-    <h2>Adicionar Novo Produto</h2>
-<form id="formProduto">
-    <input type="text" id="nome" placeholder="Nome do Produto" required>
-    <input type="text" id="descricao" placeholder="Descrição" required>
-    <input type="number" id="preco" placeholder="Preço" required>
-    <input type="number" id="frete" placeholder="Frete" required>
-    <input type="text" id="imagem" placeholder="URL da Imagem" required>
-    <button type="submit">Cadastrar Produto</button>
-</form>
+    <div class="system-container">
+        <h1 class="title-system">Painel do Administrador</h1>
+        <div id="produtos"></div>
+        <h2 class="subtitle-system">Adicionar Novo Produto</h2>
+        <form class="form-product" id="formProduto">
+            <p class="name-category-input">Nome do Produto</p>
+            <input class="input-form-product" type="text" id="nome" placeholder="Nome do Produto" required>
+            <p class="name-category-input">Preço</p>
+            <input class="input-form-product" type="number" id="preco" placeholder="Preço" required>
+            <p class="name-category-input">Frete</p>
+            <input class="input-form-product" type="number" id="frete" placeholder="Frete" required>
+            <p class="name-category-input">Imagem do produto ("URL")</p>
+            <input class="input-form-product" type="text" id="imagem" placeholder="URL da Imagem" required>
+            <div class="div-input-description">
+                <p class="name-category-input">Descrição do produto</p>
+                <textarea id="descricao" class="input-form-product input-form-description" placeholder="Descrição" required></textarea>
+            </div>
+            <div>
+                <button class="button-form-product" type="submit" onclick="adicionarProduto()">Adicionar Produto</button>
+            </div>
+        </form>
+    </div>
 
-<h2>Editar Produto</h2>
-<form id="formEdicao" style="display: none;">
-    <input type="hidden" id="produtoId">
-    <input type="text" id="editNome" placeholder="Nome do Produto" required>
-    <input type="text" id="editDescricao" placeholder="Descrição" required>
-    <input type="number" id="editPreco" placeholder="Preço" required>
-    <input type="number" id="editFrete" placeholder="Frete" required>
-    <input type="text" id="editImagem" placeholder="URL da Imagem" required>
-    <button type="submit">Salvar Alterações</button>
-    <button type="button" onclick="cancelarEdicao()">Cancelar</button>
-</form>
+    <div class="system-container">
+    <h2 class="subtitle-system">Editar Produto</h2>
+        <form class="form-edit-product" id="formEdicao" style="display: none;">
+            <input class="input-edit-product" type="hidden" id="produtoId">
+            <p class="name-category-input">Nome do produto</p>
+            <input class="input-edit-product" type="text" id="editNome" placeholder="Nome do Produto" required>
+            <p class="name-category-input">Descrição</p>
+            <textarea id="editDescricao" class="input-form-product input-form-description input-edit-product" placeholder="Descrição" required></textarea>
+            <p class="name-category-input">Preço:</p>
+            <input class="input-edit-product" type="number" id="editPreco" placeholder="Preço" required>
+            <p class="name-category-input">Frete:</p>
+            <input class="input-edit-product" type="number" id="editFrete" placeholder="Frete" required>
+            <p class="name-category-input">Imagem do produto ("URL")</p>
+            <input class="input-edit-product" type="text" id="editImagem" placeholder="URL da Imagem" required>
+            <div>
+                <button class="btn-edit-product" type="submit">Salvar Alterações</button>
+                <button class="btn-edit-product" type="button" onclick="cancelarEdicao()">Cancelar</button>
+            </div>
+        </form>
+    </div>
 
     <script src="../backend/script.js"></script>
 </body>

@@ -1,5 +1,4 @@
 const { json } = ("express");
-
 const express = ('express');
 
 let carrinho = [];
@@ -70,8 +69,6 @@ function comprarProduto(id) {
 }
 
 function removerDoCarrinho(id) {
-    console.log("Removendo produto do Carrinho: ", id);
-
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
     carrinho = carrinho.filter(item => item.id !== id);
@@ -87,10 +84,7 @@ function finalizarCompra() {
 }
 
 function adicionarAoCarrinho(id, nome, preco) {
-    console.log(`Adicionando ao carrinho: ID=${id}, Nome=${nome}, Preço=${preco}`); //Debug para verificar se os dados estão corretos
-
     if (!id || !nome || !preco) {
-        alert("Erro ao adicionar produto ao carrinho!");
         return;
     }
 
@@ -105,7 +99,6 @@ function adicionarAoCarrinho(id, nome, preco) {
     }
 
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
-    console.log("Novo estado do carrinho:", carrinho);
     alert(`${nome} foi adicionado ao carrinho!`);
 }
 

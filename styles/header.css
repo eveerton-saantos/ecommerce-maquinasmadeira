@@ -1,10 +1,45 @@
-@import url(../styles/style.css);
-
 .header {
-    padding: 2em 1em;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.header-link-system {
+    background-color: var(--preto);
+    padding: 0.5em 0;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.75;
+}
+
+.header-page {
     background-color: var(--laranja);
 }
 
 .logo-img {
-    padding: 1.25em;
+    padding: 1em;
+    width: 28vh;
 }
+
+.header-nav {
+    background-color: var(--branco);
+    padding: 0.5em 0.75em;
+    font-size: 1em;
+}
+
+.header-nav-link:hover {
+    color: var(--laranja);
+}
+
+.header-nav-link {
+    padding: 0 0.75em;
+    color: var(--preto);
+    font-weight: 500;
+}
+
