@@ -1,0 +1,45 @@
+.footer {
+    width: 100%;
+    background-color: var(--background-footer);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.footer-list {
+    padding: 1em 5em;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    color: var(--preto);
+    font-size: 0.8em;
+    font-weight: 500;
+    padding: 0.25em 1em;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #d6d6d6;
+}
+
+.footer-copy {
+    font-weight: 400;
+    font-size: 0.75em;
+    padding: 1em 7.5em;
+    color: #797979;
+    display: flex;
+    align-items: center;
+}
+
+.footer-busyness {
+    font-size: 0.75em;
+    font-weight: 600;
+    color: #0a750f;
+    padding: 1em 7.5em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

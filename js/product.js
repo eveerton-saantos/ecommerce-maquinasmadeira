@@ -27,13 +27,10 @@ async function carregarProduto() {
         document.getElementById("produtoPreco").innerText = produtoAtual.preco.toFixed(2);
 
         document.getElementById("btnAdicionar").addEventListener("click", () => {
-            console.log(`Adicionando ao carrinho: ID=${produtoAtual._id}, Nome=${produtoAtual.nome}, Preço=${produtoAtual.preco}`);
             adicionarAoCarrinho(produtoAtual._id, produtoAtual.nome, produtoAtual.preco);
         });
 
-        console.log("Produto carregado com sucesso:", produtoAtual);
     } catch (error) {
-        console.error("Erro ao buscar produto:", error);
         alert("Erro ao carregar produto. Tente novamente!");
     }
 }
@@ -42,7 +39,6 @@ function adicionarAoCarrinho(id, nome, preco) {
     console.log(`Adicionando ao carrinho: ID=${id}, Nome=${nome}, Preço=${preco}`); //Debug para verificar se os dados estão corretos
 
     if (!id || !nome || !preco) {
-        alert("Erro ao adicionar produto ao carrinho!");
         return;
     }
 

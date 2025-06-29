@@ -1,22 +1,58 @@
+function limiteDescriptionProducts(limite = 50) {
+    const descriptions = document.querySelectorAll('.description');
+
+    descriptions.forEach(el => {
+    const completText = el.textContent;
+    if (completText.length > limite) {
+        el.textContent = completText.substring(0, limite) + '...';
+    }
+    });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    limiteDescriptionProducts();
+});
+
+
 async function carregarProdutos() {
     const response = await fetch('http://localhost:5000/produtos');
     const produtos = await response.json();
-    
+
     const produtosContainer = document.getElementById('produtos');
     produtosContainer.innerHTML = '';
 
     produtos.forEach(produto => {
         const div = document.createElement('div');
         div.classList.add('produto');
+        div.setAttribute('data-id', produto._id);
+        div.setAttribute('data-nome', produto.nome);
+        div.setAttribute('data-descricao', encodeURIComponent(produto.descricao));
+        div.setAttribute('data-preco', produto.preco);
+        div.setAttribute('data-frete', produto.frete);
+        div.setAttribute('data-imagem', produto.imagem);
+
         div.innerHTML = `
-            <h3>${produto.nome}</h3>
-            <p>${produto.descricao}</p>
-            <p><strong>Preço:</strong> R$${produto.preco.toFixed(2)}</p>
-            <button onclick="editarProduto('${produto._id}', '${produto.nome}', '${produto.descricao}', ${produto.preco}, ${produto.frete}, '${produto.imagem}')">✏ Editar</button>
-            <button onclick="deletarProduto('${produto._id}')">🗑 Excluir</button>
+            <h3 class="product-title-system">${produto.nome}</h3>
+            <p class="product-text-system description">${produto.descricao}</p>
+            <p class="product-price-system"><strong>Preço:</strong> R$${produto.preco.toFixed(2)}</p>
+            <button class="product-btn-system" onclick="editarViaDataset(this.parentElement)">Editar</button>
+            <button class="product-btn-system" onclick="deletarProduto('${produto._id}')">Excluir</button>
         `;
         produtosContainer.appendChild(div);
     });
+
+    limiteDescriptionProducts();
+}
+
+function editarViaDataset(div) {
+    document.getElementById('produtoId').value = div.dataset.id;
+    document.getElementById('editNome').value = div.dataset.nome;
+    document.getElementById('editDescricao').value = decodeURIComponent(div.dataset.descricao);
+    document.getElementById('editPreco').value = div.dataset.preco;
+    document.getElementById('editFrete').value = div.dataset.frete;
+    document.getElementById('editImagem').value = div.dataset.imagem;
+
+    document.getElementById('formEdicao').style.display = 'block';
 }
 
 async function deletarProduto(id) {

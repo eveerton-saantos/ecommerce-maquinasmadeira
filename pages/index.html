@@ -16,38 +16,40 @@
             <a href="./index.html">
                 <img src="../assets/Logo Branco.svg" class="logo-img" alt="Logo do Site Máquinas Madeira">
             </a>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="../pages/index.html">Início</a>
-                        <a href="#">Produtos</a>
-                        <a href="../pages/cart.html">Carrinho</a>
-                        <a href="#">Contato</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>    
+        </div>
+        <nav class="header-nav">
+            <ul>
+                <li>
+                    <a class="header-nav-link" href="../pages/index.html">Início</a>
+                    <a class="header-nav-link" href="../pages/cart.html">Carrinho</a>
+                </li>
+            </ul>
+        </nav>  
     </header>
 
     <main>
-        <section>
-            <div id="listaProdutos"></div>
-                <h2>Produtos Disponíveis</h2>
+        <section class="list-offers">
+            <h2 class="list-offers-title">Produtos Disponíveis</h2>
+            <div class="list-product" id="listaProdutos"></div>
                 <div id="listaProdutos"></div>
                     <div id="listaProdutos">
                         <template id="produtoTemplate">
                             <div class="produto">
                                 <a href="">
-                                    <img class="produto-imagem" src="" alt="">
+                                    <img class="produto-imagem" src="" alt="Imagem do produto">
                                     <h3 class="produto-nome"></h3>
                                 </a>
                                 <p class="produto-descricao"></p>
-                                <p><strong>Preço:</strong> R$<span class="produto-preco"></span></p>
-                                <button class="btn-add">Adicionar ao Carrinho</button>
+                                <p>R$ <span class="produto-preco"></span></p>
+                                <p class="product-advance-payment">à vista no PIX ou Boleto.</p>
+                                <button id="btn-add" class="btn-add">Adicionar ao Carrinho</button>
                             </div>
                         </template>
                     </div>
+                </div>
+            </div>
         </section>
+
         <section>
             <template id="produtoTemplate">
                 <div class="produto">
@@ -65,8 +67,21 @@
 
     </main>
 
-    <footer>
-        <p>&copy; 2025 Máquinas Madeira. Todos os direitos reservados.</p>
+    <footer class="footer">
+        <ul>
+            <li class="footer-list">
+                <a class="footer-link" href="#">Atendimento</a>
+                <a class="footer-link" href="#">Central de ajuda</a>
+                <a class="footer-link" href="#">Troca e Devolução</a>
+                <a class="footer-link" href="#">Quem somos</a>
+                <a class="footer-link" href="#">Segurança</a>
+                <a class="footer-link" href="#">Entrega</a>
+            </li>
+        </ul>
+        <div class="footer-container">
+            <p class="footer-copy">&copy; 2025 Máquinas Madeira. Todos os direitos reservados.</p>
+            <p class="footer-busyness"><img class="footer-icon-brazil" src="../assets/brazil-icon.png" alt="Brandeira do Brasil">EMPRESA 100% BRASILEIRA. </p>
+        </div>
     </footer>
 
     <script src="../js/script.js"></script>
