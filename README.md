@@ -35,8 +35,24 @@ Este projeto é um e-commerce voltado para a comercialização de máquinas e eq
 ## Funcionalidades Atuais _(versão 1.0.0)_
 
 - Navegação responsiva e fluida
-- Sistema CRUD de produtos totalmente funcional
-- Separação clara de responsabilidades entre frontend e backend
+- Sistema **CRUD** de produtos totalmente funcional
+- Separação clara entre frontend e backend
+- Adição de produtos ao carrinho com controle de quantidade
+- Armazenamento do carrinho via `localStorage`
+
+## Interface Overview
+
+![Homepage](./assets/screenshots/backend/dashboard-adm.png)
+*Página Dashboard destacando os produtos já adicionados ao site*
+![Homepage](./assets/screenshots/backend/dashboard-adm-edit.png)
+*Seção de editação dos produtos no Dashboard*
+
+![Homepage](./assets/screenshots/frontend/home.png)
+*Página inicial com destaque para produtos e menu fixo.*
+![Homepage](./assets/screenshots/frontend/product.png)
+*Detalhes do produto com controle de quantidade e botão*
+![Homepage](./assets/screenshots/frontend/cart.png)
+*Carrinho com visual limpo*
 
 ## Próximas Etapas _(planejadas para versões 1.1.x e 1.2.0)_
 
@@ -44,3 +60,11 @@ Este projeto é um e-commerce voltado para a comercialização de máquinas e eq
 - Adicionar sistema de autenticação de administradores
 - Implementar testes automatizados
 - Realizar o deploy do sistema em ambiente escalável
+- Criar sistema de login para usuários finais
+- Permitir avaliação de produtos por usuários autenticados
+- Adicionar painel de destaque no dashboard para selecionar produtos em promoção
+- Implementar lógica de preço promocional:
+  - Exibir valor original com traço
+  - Mostrar valor com desconto
+  - Calcular e exibir porcentagem de economia
+
