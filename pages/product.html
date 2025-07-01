@@ -39,9 +39,19 @@
                 <div class="info-product" >
                     <p>vendido e entregue por máquinas<strong>madeira</strong></p>
                     <p class="price-product"><strong>R$ </strong><span id="produtoPreco"></span></p>
-                    <button class="btn-product" id="btnAdicionar" onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
-                    <button class="btn-product" onclick="comprarAgora()">Comprar Agora</button>
-                </div>
+                    <a href="#">ver mais formas de pagamento</a>
+                    <div class="quantity-container">
+                        <label for="quantidade">Quantidade:</label>
+                        <div class="quantity-controls">
+                            <input class="input-number-quantity" type="number" id="quantity" value="1" min="1">
+                            <div class="div-btn-quant">
+                                <button class="btn-quantity" onclick="changeQuantity(1)">+</button>
+                                <button class="btn-quantity" onclick="changeQuantity(-1)">-</button>
+                            </div>
+                            <button class="btn-product" id="btnAdicionar" onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </div>    
             </div>
             <div class="product-description product-background">
                 <h3 class="description-title">Descrição:</h3>

@@ -35,8 +35,20 @@ async function carregarProduto() {
     }
 }
 
+function changeQuantity(value) {
+    const input = document.getElementById('quantity');
+    let quantity = parseInt(input.value) || 1;
+    quantity += value;
+
+    if (quantity < 1) quantity = 1;
+
+    input.value = quantity;
+}
+
 function adicionarAoCarrinho(id, nome, preco) {
     console.log(`Adicionando ao carrinho: ID=${id}, Nome=${nome}, Preço=${preco}`); //Debug para verificar se os dados estão corretos
+
+    const quantity = parseInt(document.getElementById('quantity').value) || 1;
 
     if (!id || !nome || !preco) {
         return;
@@ -49,7 +61,7 @@ function adicionarAoCarrinho(id, nome, preco) {
     if (itemExistente) {
         itemExistente.quantidade++;
     } else {
-        carrinho.push({ id, nome, preco, quantidade: 1 });
+        carrinho.push({ id, nome, preco, quantidade: quantity });
     }
 
     localStorage.setItem('carrinho', JSON.stringify(carrinho));

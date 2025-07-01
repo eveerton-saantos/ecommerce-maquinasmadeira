@@ -53,6 +53,7 @@
 }
 
 .btn-product:hover {
+    transition: 250ms;
     background-color: var(--verde);
 }
 
@@ -60,4 +61,40 @@
     border: 1px solid var(--cinza-borda);
     border-radius: 8px;
     padding: 1.75em 1em;
+}
+
+.quantity-container {
+    display: block;
+}
+
+.quantity-controls {
+    display: flex;
+}
+
+.div-btn-quant {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-quantity {
+    border: 1px solid var(--cinza-borda);
+    background-color: var(--laranja);
+    color: var(--branco);
+    font-weight: 800;
+    font-size: 1em;
+}
+
+.input-number-quantity {
+    width: 3em;
+    padding: 0.75em;
+    border-radius: 5px;
+    border: 1px solid var(--cinza-borda);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.input-number-quantity::-webkit-inner-spin-button,
+.input-number-quantity::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
