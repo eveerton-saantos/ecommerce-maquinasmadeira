@@ -25,9 +25,7 @@ app.get('/product.html', (req, res) => {
     res.sendFile(__dirname + './product.html');
 });
 
-app.listen(5000, () => {
-    console.log("Servidor rodando na porta 5000");
-});
+
 
 // Conectar ao MongoDB
 mongoose.connect('mongodb://localhost:27017/ecommerce_db', {
@@ -59,6 +57,20 @@ app.put('/produtos/:id', async (req, res) => {
     
     res.json({ message: 'Produto atualizado!', produto: produtoAtualizado });
 });
+
+app.patch('/produtos/:id', async (req, res) => {
+    const { id } = req.params;
+    const update = req.body;
+
+    try {
+        const produtoAtualizado = await Produto.findByIdAndUpdate(id, update, { new: true });
+        res.json({ message: 'Produto atualizado com sucesso (PATCH)', produto: produtoAtualizado });
+    } catch (err) {
+        console.error('Erro ao atualizar produto:', err);
+        res.status(500).json({ error: 'Erro ao atualizar o produto.' });
+    }
+});
+
 
 // Rota para criar um novo produto
 app.post('/produtos', async (req, res) => {

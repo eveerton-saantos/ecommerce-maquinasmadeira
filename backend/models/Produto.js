@@ -5,7 +5,11 @@ const ProdutoSchema = new mongoose.Schema({
     descricao: String,
     preco: Number,
     frete: Number,
-    imagem: String
+    imagem: String,
+    highlight: {
+        type: Boolean,
+        default: false
+    }
 });
 
 module.exports = mongoose.model('Produto', ProdutoSchema);

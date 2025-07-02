@@ -98,3 +98,14 @@
     -webkit-appearance: none;
     margin: 0;
 }
+
+.destaque-badge {
+    display: inline-block;
+    background-color: gold;
+    color: #000;
+    font-weight: bold;
+    font-size: 0.95rem;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}

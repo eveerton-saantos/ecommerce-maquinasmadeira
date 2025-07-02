@@ -1,3 +1,5 @@
+const highlight = document.getElementById('highlight').checked;
+
 function limiteDescriptionProducts(limite = 50) {
     const descriptions = document.querySelectorAll('.description');
 
@@ -12,6 +14,17 @@ function limiteDescriptionProducts(limite = 50) {
 window.addEventListener('DOMContentLoaded', () => {
     limiteDescriptionProducts();
 });
+
+async function toggleDestaque(id, novoValor) {
+    await fetch(`http://localhost:5000/produtos/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ highlight: novoValor })
+    });
+
+  carregarProdutos(); // Recarrega a lista pra refletir a mudança
+}
+
 
 
 async function carregarProdutos() {
@@ -38,6 +51,20 @@ async function carregarProdutos() {
             <button class="product-btn-system" onclick="editarViaDataset(this.parentElement)">Editar</button>
             <button class="product-btn-system" onclick="deletarProduto('${produto._id}')">Excluir</button>
         `;
+        
+        if(produto.highlight) {
+            const highlightTag = document.createElement('span');
+            highlightTag.textContent = "*Destaque";
+            highlightTag.classList.add('product-highlight-badge');
+            div.prepend(highlightTag);
+        }
+
+        const toggleButton = document.createElement('button');
+        toggleButton.textContent = produto.highlight ? "Remover destaque" : "Destacar produto";
+        toggleButton.classList.add('product-btn-system');
+        toggleButton.onclick = () => toggleDestaque(produto._id, !produto.highlight);
+        div.appendChild(toggleButton);
+
         produtosContainer.appendChild(div);
     });
 
@@ -70,7 +97,8 @@ document.getElementById('formProduto').addEventListener('submit', async function
         descricao: document.getElementById('descricao').value,
         preco: parseFloat(document.getElementById('preco').value),
         frete: parseFloat(document.getElementById('frete').value),
-        imagem: document.getElementById('imagem').value
+        imagem: document.getElementById('imagem').value,
+        highlight: document.getElementById('highlight').checked
     };
 
     const response = await fetch('http://localhost:5000/produtos', {

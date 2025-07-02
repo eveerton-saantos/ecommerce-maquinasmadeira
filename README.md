@@ -1,5 +1,9 @@
 # E-commerce Máquinas Madeira
 
+![Versão](https://img.shields.io/badge/versão-1.1.1-blue)
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![Licença](https://img.shields.io/badge/licença-MIT-green)
+
 Este projeto é um e-commerce voltado para a comercialização de máquinas e equipamentos de marcenaria, desenvolvido com foco na experiência do usuário, performance e escalabilidade.
 
 ## Estrutura do Projeto
@@ -23,6 +27,11 @@ Este projeto é um e-commerce voltado para a comercialização de máquinas e eq
 - Organização modular do código:
   - Modelos em `/models`
   - Lógica principal no `server.js` e `script.js`
+- Experiência do Admin
+  - Marcar produtos como "destaque" direto do painel administrativo
+  - Indicar visualmente produtos em destaque na página do produto
+  - Alternar destaque sem precisar editar o produto (toggle direto)
+
 
 ### Integração de Pagamentos _(previsto para a versão 1.1.0)_
 
@@ -32,7 +41,7 @@ Este projeto é um e-commerce voltado para a comercialização de máquinas e eq
   - Cancelamento e estorno
   - Atualização de status (aprovado, recusado, pendente)
 
-## Funcionalidades Atuais _(versão 1.0.0)_
+## Funcionalidades Atuais _(versão 1.1.0)_
 
 - Navegação responsiva e fluida
 - Sistema **CRUD** de produtos totalmente funcional

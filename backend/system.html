@@ -20,16 +20,20 @@
         <h2 class="subtitle-system">Adicionar Novo Produto</h2>
         <form class="form-product" id="formProduto">
             <p class="name-category-input">Nome do Produto</p>
-            <input class="input-form-product" type="text" id="nome" placeholder="Nome do Produto" required>
+            <input class="input-form-product" type="text" id="nome" required>
             <p class="name-category-input">Preço</p>
-            <input class="input-form-product" type="number" id="preco" placeholder="Preço" required>
+            <input class="input-form-product" type="number" id="preco" required>
             <p class="name-category-input">Frete</p>
-            <input class="input-form-product" type="number" id="frete" placeholder="Frete" required>
+            <input class="input-form-product" type="number" id="frete" required>
             <p class="name-category-input">Imagem do produto ("URL")</p>
-            <input class="input-form-product" type="text" id="imagem" placeholder="URL da Imagem" required>
+            <input class="input-form-product" type="text" id="imagem" required>
             <div class="div-input-description">
                 <p class="name-category-input">Descrição do produto</p>
-                <textarea id="descricao" class="input-form-product input-form-description" placeholder="Descrição" required></textarea>
+                <textarea id="descricao" class="input-form-product input-form-description" required></textarea>
+                <label>
+                    <input type="checkbox" id="highlight" />
+                    Destacar produto?
+                </label>
             </div>
             <div>
                 <button class="button-form-product" type="submit" onclick="adicionarProduto()">Adicionar Produto</button>
@@ -51,6 +55,10 @@
             <input class="input-edit-product" type="number" id="editFrete" placeholder="Frete" required>
             <p class="name-category-input">Imagem do produto ("URL")</p>
             <input class="input-edit-product" type="text" id="editImagem" placeholder="URL da Imagem" required>
+            <label>
+                    <input type="checkbox" id="highlight" />
+                    Destacar produto?
+                </label>
             <div>
                 <button class="btn-edit-product" type="submit">Salvar Alterações</button>
                 <button class="btn-edit-product" type="button" onclick="cancelarEdicao()">Cancelar</button>

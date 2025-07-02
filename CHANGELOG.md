@@ -6,6 +6,14 @@ O formato segue os princípios de versionamento semântico: MAJOR.MINOR.PATCH
 
 ---
 
+## [1.1.2] - 2025-07-01
+### adicionado
+- Botão para marcar/desmarcar produtos como destaque no admin (toggle direto)
+- Selo visual na página do produto quando for destaque
+- Rota PATCH `/produtos/:id` para updates parciais no backend
+
+---
+
 ## [1.1.0] - 2025-06-29
 
 ### Adicionado
@@ -58,3 +66,8 @@ O formato segue os princípios de versionamento semântico: MAJOR.MINOR.PATCH
 - Sistema de login e autenticação para administradores
 - Implementação de testes automatizados
 - Deploy em ambiente cloud com versionamento contínuo
+
+---
+
+Esse changelog segue o padrão [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/) 📄  
+Versionamento semântico conforme [SemVer.org](https://semver.org/lang/pt-BR/) 🔖

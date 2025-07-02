@@ -12,6 +12,13 @@ async function carregarProduto() {
     try {
         const response = await fetch(`http://localhost:5000/produto/${idProduto}`);
         const data = await response.json();
+    
+        if (data.highlight) {
+            const destaqueTag = document.createElement('div');
+            destaqueTag.classList.add('destaque-badge');
+            destaqueTag.innerHTML = '⭐ Destaque';
+            document.querySelector('.info-product').prepend(destaqueTag);
+        }
 
         console.log("API retornou:", data); // ✅ Debug para verificar o conteúdo
 
@@ -33,6 +40,9 @@ async function carregarProduto() {
     } catch (error) {
         alert("Erro ao carregar produto. Tente novamente!");
     }
+
+
+
 }
 
 function changeQuantity(value) {
