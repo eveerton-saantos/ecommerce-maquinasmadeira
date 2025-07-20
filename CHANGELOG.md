@@ -6,6 +6,30 @@ O formato segue os princípios de versionamento semântico: MAJOR.MINOR.PATCH
 
 ---
 
+## [1.1.3] - 2025-07-20
+### Adicionado
+
+- Selo visual “Entrega Expressa” no painel admin e na página do produto
+- Botão no admin para alternar status `express` com feedback dinâmico
+- Agrupamento de selos em `badge-container` para exibição harmonizada
+- Nova rota `GET /produto/:id` para carregar produtos individualmente
+- Validação visual e tratamento de erro por ID na página `product.html`
+- Separação das rotas RESTful: `/produto/:id` e `/produtos`
+
+### Alterado
+- Lógica de recarregamento após `PATCH` ajustada para refletir alteração imediata
+- Refatoração da função `carregarProdutos()` com `prepend()` correto
+- Estilo visual dos selos `highlight` e `express` com cores diferenciadas e responsividade
+
+### Corrigido
+- `ReferenceError: Produto is not defined` resolvido com `require` correto
+- Inclusão dos campos `highlight` e `express` no `POST /produtos`
+- Erro `Cannot GET /produtos` resolvido com `catch(error)` na rota de listagem
+- Remoção de `const express = ('express')` do frontend (incompatível com navegador)
+- Proteção contra `undefined.length` e `null.innerText` no DOM do `index.html`
+
+---
+
 ## [1.1.2] - 2025-07-01
 ### adicionado
 - Botão para marcar/desmarcar produtos como destaque no admin (toggle direto)

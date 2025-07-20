@@ -1,79 +1,106 @@
-# E-commerce Máquinas Madeira
+# 🛠️ E-commerce Máquinas Madeira
 
-![Versão](https://img.shields.io/badge/versão-1.1.1-blue)
+![Versão](https://img.shields.io/badge/versão-1.1.3-blue)
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 ![Licença](https://img.shields.io/badge/licença-MIT-green)
 
-Este projeto é um e-commerce voltado para a comercialização de máquinas e equipamentos de marcenaria, desenvolvido com foco na experiência do usuário, performance e escalabilidade.
+Projeto de e-commerce especializado em máquinas e equipamentos de marcenaria. Desenvolvido com foco em performance, organização modular e escalabilidade — tanto para administradores quanto para usuários finais.
+
+---
 
 ## Estrutura do Projeto
 
 ### Frontend _(desde a versão 1.0.0)_
 
 - Páginas implementadas:
-  - `index.html`: página inicial
-  - `product.html`: página de detalhes do produto
-  - `cart.html`: carrinho de compras
-  - `checkout.html`: em desenvolvimento _(versão planejada 1.1.0)_
-- Estilos organizados em `/styles` (`header.css`, `footer.css`, `style.css`, etc.)
-- Recursos visuais armazenados em `/assets`
+  - `index.html`: página inicial com lista de produtos
+  - `product.html`: exibe detalhes do produto com destaque e entrega expressa
+  - `cart.html`: carrinho de compras com controle por `localStorage`
+  - `checkout.html`: estrutura pronta, aguardando integração de pagamento
+- Estilos organizados em `/styles`:
+  - `style-system.css`, `header.css`, `footer.css`, `product.css`, `cart.css`
+- Recursos visuais em `/assets`: imagens, ícones, screenshots
 
 ### Backend _(desde a versão 1.0.0)_
 
-- Funcionalidades:
-  - Adicionar, editar e remover produtos
-  - API desenvolvida em Node.js com Express
-  - Banco de dados MongoDB para armazenamento das informações dos produtos
-- Organização modular do código:
-  - Modelos em `/models`
-  - Lógica principal no `server.js` e `script.js`
-- Experiência do Admin
-  - Marcar produtos como "destaque" direto do painel administrativo
-  - Indicar visualmente produtos em destaque na página do produto
-  - Alternar destaque sem precisar editar o produto (toggle direto)
+- API RESTful com Node.js + Express
+- MongoDB como banco de dados (`ecommerce_db`)
+- Arquitetura modular:
+  - Modelos em `/models` (`Produto.js`)
+  - Lógica principal no `server.js`
+- Funcionalidades administrativas:
+  - CRUD completo de produtos
+  - Botões para alternar `highlight` (destaque) e `express` (entrega rápida)
+  - Selo visual exibido diretamente no painel e frontend
 
+---
 
-### Integração de Pagamentos _(previsto para a versão 1.1.0)_
+## Integração de Pagamentos _(previsto para versão 1.3.x)_
 
-- Página de checkout já construída, aguardando conexão com a API da Pagar.me
-- Futuras funcionalidades com a API:
-  - Processamento de pagamento
-  - Cancelamento e estorno
-  - Atualização de status (aprovado, recusado, pendente)
+- Página de checkout estruturada
+- Planejada integração com API da **Pagar.me**
+- Funcionalidades futuras:
+  - Processamento de pagamentos
+  - Cancelamento, estorno e atualização de status
 
-## Funcionalidades Atuais _(versão 1.1.0)_
+---
 
-- Navegação responsiva e fluida
-- Sistema **CRUD** de produtos totalmente funcional
-- Separação clara entre frontend e backend
-- Adição de produtos ao carrinho com controle de quantidade
-- Armazenamento do carrinho via `localStorage`
+## Funcionalidades Atuais _(versão 1.1.3)_
+
+- Carrinho persistente com `localStorage`
+- Navegação dinâmica entre páginas e produtos
+- Exibição de selos visuais `⭐ Destaque` e `🚚 Entrega Expressa`
+- Botões no painel admin com ação toggle para marcações especiais
+- Página individual de produto com carregamento por ID via URL
+
+---
+
+## Rotas da API
+
+| Método | Rota                  | Descrição                           |
+|--------|------------------------|-------------------------------------|
+| GET    | `/produtos`            | Lista todos os produtos             |
+| GET    | `/produto/:id`         | Retorna dados de um produto por ID  |
+| POST   | `/produtos`            | Cria novo produto                   |
+| PATCH  | `/produtos/:id`        | Atualização parcial (express/destaque) |
+| PUT    | `/produtos/:id`        | Edição completa de produto          |
+| DELETE | `/produtos/:id`        | Remove produto do banco             |
+
+---
 
 ## Interface Overview
 
-![Homepage](./assets/screenshots/backend/dashboard-adm.png)
-*Página Dashboard destacando os produtos já adicionados ao site*
-![Homepage](./assets/screenshots/backend/dashboard-adm-edit.png)
-*Seção de editação dos produtos no Dashboard*
+![Dashboard Admin](./assets/screenshots/backend/dashboard-adm.png)
+*Painel admin com cards de produto e ações visuais*
 
-![Homepage](./assets/screenshots/frontend/home.png)
-*Página inicial com destaque para produtos e menu fixo.*
-![Homepage](./assets/screenshots/frontend/product.png)
-*Detalhes do produto com controle de quantidade e botão*
-![Homepage](./assets/screenshots/frontend/cart.png)
-*Carrinho com visual limpo*
+![Edição no Painel](./assets/screenshots/backend/dashboard-adm-edit.png)
+*Interface de edição rápida direto do dashboard*
 
-## Próximas Etapas _(planejadas para versões 1.1.x e 1.2.0)_
+![Página Inicial](./assets/screenshots/frontend/home.png)
+*Visual responsivo com selos e botão de compra*
 
-- Concluir integração com a Pagar.me
-- Adicionar sistema de autenticação de administradores
-- Implementar testes automatizados
-- Realizar o deploy do sistema em ambiente escalável
-- Criar sistema de login para usuários finais
-- Permitir avaliação de produtos por usuários autenticados
-- Adicionar painel de destaque no dashboard para selecionar produtos em promoção
-- Implementar lógica de preço promocional:
-  - Exibir valor original com traço
-  - Mostrar valor com desconto
-  - Calcular e exibir porcentagem de economia
+![Detalhe do Produto](./assets/screenshots/frontend/product.png)
+*Página de produto com selo e botão de carrinho*
 
+![Carrinho](./assets/screenshots/frontend/cart.png)
+*Carrinho com controle de quantidade e valor total*
+
+---
+
+## Roadmap & Próximas Etapas
+
+ Planejadas para versões `1.3.x`:
+
+- Finalizar integração de pagamentos (Pagar.me)
+- Adicionar sistema de login para administradores
+- Criar login para usuários finais
+- Implementar painel de produtos em promoção
+- Adicionar lógica de preço promocional:
+  - Valor original com traço
+  - Valor com desconto + porcentagem de economia
+- Avaliação por usuários autenticados
+- Testes automatizados e deploy em ambiente cloud
+
+---
+
+Projeto em constante evolução — cada versão é construída com base em melhorias reais e correções documentadas no [`CHANGELOG.md`](./CHANGELOG.md)

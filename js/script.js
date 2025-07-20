@@ -1,6 +1,3 @@
-const { json } = ("express");
-const express = ('express');
-
 let carrinho = [];
 
 async function carregarProdutos() {
@@ -20,7 +17,7 @@ async function carregarProdutos() {
         clone.querySelector(".produto-imagem").alt = produto.nome;
         clone.querySelector(".produto-nome").innerText = produto.nome;
         clone.querySelector(".produto-descricao").innerText = produto.descricao;
-        clone.querySelector(".produto-preco").innerText = produto.preco.toFixed(2);
+        clone.querySelector(".produto-preco").innerText = produto.preco.toFixed(2).replace('.', ',');
 
         clone.querySelector(".btn-add").addEventListener("click", () => {
             adicionarAoCarrinho(produto._id, produto.nome, produto.preco);
@@ -48,7 +45,10 @@ function exibirCheckout() {
         checkoutContainer.appendChild(div);
     });
 
-    document.getElementById('checkoutTotal').innerText = total.toFixed(2);
+    const totalElemento = document.getElementById('checkoutTotal');
+    if(totalElemento) {
+        totalElemento.innerText = total.toFixed(2);
+    }
 }
 
 function finalizarCompra() {
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', exibirCheckout);
 
 function comprarProduto(id) {
     alert("Redirecionando para compra do produto ID: " + id);
-    // Aqui você pode adicionar um redirecionamento real para uma página de checkout!
+    // Aqui podemos adicionar um redirecionamento real para uma página de checkout!
 }
 
 function removerDoCarrinho(id) {

@@ -31,7 +31,7 @@ async function carregarProduto() {
         document.getElementById("produtoNome").innerText = produtoAtual.nome;
         document.getElementById("produtoImagem").src = produtoAtual.imagem;
         document.getElementById("produtoDescricao").innerText = produtoAtual.descricao;
-        document.getElementById("produtoPreco").innerText = produtoAtual.preco.toFixed(2);
+        document.getElementById("produtoPreco").innerText = produtoAtual.preco.toFixed(2).replace('.', ',');
 
         document.getElementById("btnAdicionar").addEventListener("click", () => {
             adicionarAoCarrinho(produtoAtual._id, produtoAtual.nome, produtoAtual.preco);
@@ -40,9 +40,6 @@ async function carregarProduto() {
     } catch (error) {
         alert("Erro ao carregar produto. Tente novamente!");
     }
-
-
-
 }
 
 function changeQuantity(value) {

@@ -1,35 +1,43 @@
 function carregarCarrinho() {
-    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-    console.log("Carrinho carregado do Local Storage:", carrinho); // ✅ Debug para verificar os produtos armazenados
-
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
     const carrinhoContainer = document.getElementById('carrinhoLista');
 
     if (!carrinhoContainer) {
-        console.error("Erro: Elemento 'carrinhoLista' não encontrado! Verifique o HTML.");
+        console.error("Elemento 'carrinhoLista' não encontrado! Verifique o HTML.");
         return;
     }
 
     carrinhoContainer.innerHTML = '';
-
     let total = 0;
 
     carrinho.forEach(item => {
         total += item.preco * item.quantidade;
 
-        const div = document.createElement('div');
-        div.innerHTML = `
-            <p>${item.nome} - R$${item.preco.toFixed(2)} x ${item.quantidade}</p>
-            <button onclick="alterarQuantidade('${item.id}', -1)">➖</button>
-            <button onclick="alterarQuantidade('${item.id}', 1)">➕</button>
-            <button onclick="removerDoCarrinho('${item.id}')">❌ Remover</button>
-        `;
-        carrinhoContainer.appendChild(div);
+        const iconRemove = item.quantidade > 1
+            ? '../assets/icons/minus-icon.svg'
+            : '../assets/icons/trash.icon.svg';
+
+        const template = document.getElementById('templateItemCarrinho');
+        const clone = template.content.cloneNode(true);
+
+        clone.querySelector('.cart-item-nome').textContent = `${item.nome} - R$${item.preco.toFixed(2).replace('.',',')}`;
+        clone.querySelector('.cart-value-amount').textContent = item.quantidade;
+
+        clone.querySelector('.cart-item-img').src = item.imagem;
+        clone.querySelector('.cart-item-img').alt = `Imagem de ${item.nome}`;
+
+        clone.querySelector('.btn-remover-unit img').src = iconRemove;
+        clone.querySelector('.btn-remover-unit').onclick = () => alterarQuantidade(item.id, -1);
+        clone.querySelector('.btn-adicionar-unit').onclick = () => alterarQuantidade(item.id, 1);
+        clone.querySelector('.btn-remover-total').onclick = () => removerDoCarrinho(item.id);
+
+        carrinhoContainer.appendChild(clone);
     });
 
-    document.getElementById('cartTotal').innerText = total.toFixed(2);
-}
+        document.getElementById('cartTotal').innerText = total.toFixed(2).replace('.', ',');
+    }
 
-document.addEventListener('DOMContentLoaded', carregarCarrinho);
+    document.addEventListener('DOMContentLoaded', carregarCarrinho);
 
 function atualizarCarrinho() {
     const carrinhoContainer = document.getElementById('carrinhoLista'); // ✅ Ajuste para o nome correto
@@ -50,7 +58,7 @@ function atualizarCarrinho() {
 
         const div = document.createElement('div');
         div.innerHTML = `
-            <p>${item.nome} - R$${item.preco.toFixed(2)} x ${item.quantidade}</p>
+            <p>${item.nome} - R$${item.preco.toFixed(2).replace('.', ',')} x ${item.quantidade}</p>
             <button onclick="alterarQuantidade('${item.id}', -1)">➖</button>
             <button onclick="alterarQuantidade('${item.id}', 1)">➕</button>
             <button onclick="removerDoCarrinho('${item.id}')">❌ Remover</button>
@@ -58,7 +66,7 @@ function atualizarCarrinho() {
         carrinhoContainer.appendChild(div);
     });
 
-    document.getElementById('cartTotal').innerText = total.toFixed(2);
+    document.getElementById('cartTotal').innerText = total.toFixed(2).replace('.', ',');
 }
 
 function removerDoCarrinho(id) {

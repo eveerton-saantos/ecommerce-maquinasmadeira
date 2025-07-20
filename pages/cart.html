@@ -29,14 +29,43 @@
         </nav>  
     </header>
 
-    <main>
-        <section >
-            <h2>Meu Carrinho</h2>
-            <div id="carrinhoLista"></div>
-            <p><strong>Total:</strong> R$<span id="cartTotal">0.00</span></p>
-            <button onclick="finalizarCompra()">Finalizar Compra</button>
-            <button onclick="limparCarrinho()">Limpar Carrinho</button>
+    <main class="cart">
+        <section class="cart-section" >
+            <h2 class="cart-title">SEU CARRINHO</h2>
+            <template id="templateItemCarrinho">
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <img class="cart-item-img" src="item.imagem" alt="Foto do produto">
+                        <p class="cart-item-nome">Nome do produto</p>
+                    </div>
+                    <div class="cart-quanty">
+                        <button class="cart-btn-quanty btn-remover-unit">
+                            <img class="cart-icon-quanty" src="" alt="Remover">
+                        </button>
+                        <p class="cart-value-amount">1</p>
+                        <button class="cart-btn-quanty btn-adicionar-unit">
+                            <img class="cart-icon-quanty" src="../assets/icons/add.icon.svg" alt="Adicionar">
+                        </button>
+                        <button class="cart-btn-quanty btn-remover-total">
+                            ❌
+                        </button>
+                    </div>
+                </div>
+            </template>
+
+            <div class="cart-item-div">
+                <div class="cart-list" id="carrinhoLista"></div>
+            </div>
+            
         </section>
+        <section>
+            <div class="cart-total-div">
+                <p class="cart-total"><strong>Total:</strong> R$<span id="cartTotal">0.00</span></p>
+                <button class="btn-cart" onclick="finalizarCompra()">Finalizar Compra</button>
+                <button class="btn-cart" onclick="limparCarrinho()">Limpar Carrinho</button>
+            </div>
+        </section>
+
         <div id="checkoutLista"></div>
     </main>
 

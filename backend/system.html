@@ -17,14 +17,69 @@
     <div class="system-container">
         <h1 class="title-system">Painel do Administrador</h1>
         <div id="produtos"></div>
+
+    <section class="admin-panel">
+        <h2>Adicionar Novo Produto</h2>
+
+        <form id="formProduto" class="form-product">
+            <fieldset>
+                <legend>Informações Básicas</legend>
+
+                <label>Nome do Produto:</label>
+                <input type="text" id="nome" required>
+
+                <label>Descrição:</label>
+                <textarea id="descricao" rows="3"></textarea>
+
+                <label>Imagem (URL):</label>
+                <input type="text" id="imagem" placeholder="link imagem">
+
+                <label>Código do Produto:</label>
+                <input type="text" id="codigo" pattern="[A-Za-z0-9\-]+" placeholder="Ex: MDF-X120">
+            </fieldset>
+
+            <fieldset>
+                <legend>Dados Técnicos</legend>
+
+                <label>Preço:</label>
+                <input type="number" id="preco" step="0.01" min="0" required>
+
+                <label>Frete:</label>
+                <input type="number" id="frete" step="0.01" min="0" required>
+
+                <label>Estoque:</label>
+                <input type="number" id="estoque" min="0" required>
+
+                <label>Voltagem:</label>
+                <select id="voltagem" required>
+                    <option value="">Selecione</option>
+                    <option value="127v">127v</option>
+                    <option value="220v">220v</option>
+                    <option value="380v">380v</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Logística</legend>
+
+                <label><input type="checkbox" id="highlight"> Destaque o produto</label>
+                <label><input type="checkbox" id="express"> Entrega expressa</label>
+            </fieldset>
+            <button type="submit" class="btn-add">Adicionar Produto</button>
+        </form>
+    </section>
+
+    <!--<div class="system-container">
+        <h1 class="title-system">Painel do Administrador</h1>
+        <div id="produtos"></div>
         <h2 class="subtitle-system">Adicionar Novo Produto</h2>
         <form class="form-product" id="formProduto">
             <p class="name-category-input">Nome do Produto</p>
             <input class="input-form-product" type="text" id="nome" required>
             <p class="name-category-input">Preço</p>
-            <input class="input-form-product" type="number" id="preco" required>
+            <input class="input-form-product" type="number" id="preco" step="0.01" min="0" required>
             <p class="name-category-input">Frete</p>
-            <input class="input-form-product" type="number" id="frete" required>
+            <input class="input-form-product" type="number" id="frete" step="0.01" min="0" required>
             <p class="name-category-input">Imagem do produto ("URL")</p>
             <input class="input-form-product" type="text" id="imagem" required>
             <div class="div-input-description">
@@ -35,11 +90,33 @@
                     Destacar produto?
                 </label>
             </div>
+
+            <div class="form-info-product">
+                <label for="codigo">Código do Produto:</label>
+                <input type="text" id="codigo" pattern="[A-Za-z0-9\-]+">
+
+                <label for="estoque">Estoque disponível:</label>
+                <input type="number" id="estoque" min="0" required>
+
+                <label for="voltagem">Voltagem:</label>
+                <select id="voltagem">
+                    <option value="Serlecione"></option>
+                    <option value="127v"></option>
+                    <option value="220v"></option>
+                    <option value="380v"></option>
+                </select>
+
+                <label>
+                    <input type="checkbox" id="express">
+                    Entrega Express
+                </label>
+            </div>
+
             <div>
-                <button class="button-form-product" type="submit" onclick="adicionarProduto()">Adicionar Produto</button>
+                <button class="button-form-product" type="submit">Adicionar Produto</button>
             </div>
         </form>
-    </div>
+    </div> -->
 
     <div class="system-container">
     <h2 class="subtitle-system">Editar Produto</h2>
@@ -50,15 +127,37 @@
             <p class="name-category-input">Descrição</p>
             <textarea id="editDescricao" class="input-form-product input-form-description input-edit-product" placeholder="Descrição" required></textarea>
             <p class="name-category-input">Preço:</p>
-            <input class="input-edit-product" type="number" id="editPreco" placeholder="Preço" required>
+            <input class="input-edit-product" type="number" id="editPreco" step="0.01" min="0" placeholder="Preço" required>
             <p class="name-category-input">Frete:</p>
-            <input class="input-edit-product" type="number" id="editFrete" placeholder="Frete" required>
+            <input class="input-edit-product" type="number" id="editFrete" step="0.01" min="0" placeholder="Frete" required>
             <p class="name-category-input">Imagem do produto ("URL")</p>
             <input class="input-edit-product" type="text" id="editImagem" placeholder="URL da Imagem" required>
             <label>
-                    <input type="checkbox" id="highlight" />
+                <input type="checkbox" id="highlight" />
                     Destacar produto?
+            </label>
+
+            <div class="form-info-product">
+                <label for="codigo">Código do Produto:</label>
+                <input type="text" id="codigo" pattern="[A-Za-z0-9\-]+">
+
+                <label for="estoque">Estoque disponível:</label>
+                <input type="number" id="estoque" min="0" required>
+
+                <label for="voltagem">Voltagem:</label>
+                <select id="voltagem" required>
+                    <option value="Serlecione"></option>
+                    <option value="127v"></option>
+                    <option value="220v"></option>
+                    <option value="380v"></option>
+                </select>
+
+                <label>
+                    <input type="checkbox" id="express">
+                    Entrega Express
                 </label>
+            </div>
+
             <div>
                 <button class="btn-edit-product" type="submit">Salvar Alterações</button>
                 <button class="btn-edit-product" type="button" onclick="cancelarEdicao()">Cancelar</button>
