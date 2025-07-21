@@ -6,7 +6,7 @@ O formato segue os princípios de versionamento semântico: MAJOR.MINOR.PATCH
 
 ---
 
-## [1.1.3] - 2025-07-20
+## [1.3.0] - 2025-07-20
 ### Adicionado
 
 - Selo visual “Entrega Expressa” no painel admin e na página do produto
@@ -30,7 +30,7 @@ O formato segue os princípios de versionamento semântico: MAJOR.MINOR.PATCH
 
 ---
 
-## [1.1.2] - 2025-07-01
+## [1.2.0] - 2025-07-01
 ### adicionado
 - Botão para marcar/desmarcar produtos como destaque no admin (toggle direto)
 - Selo visual na página do produto quando for destaque
@@ -38,7 +38,7 @@ O formato segue os princípios de versionamento semântico: MAJOR.MINOR.PATCH
 
 ---
 
-## [1.1.0] - 2025-06-29
+## [1.1.1] - 2025-06-29
 
 ### Adicionado
 - Novos arquivos CSS para componentes específicos: `cart.css`, `footer.css`, `product.css`, `style-system.css`
@@ -73,23 +73,13 @@ O formato segue os princípios de versionamento semântico: MAJOR.MINOR.PATCH
 
 ---
 
-## [1.1.0] - Em desenvolvimento
-
+## [1.3.0] - Em desenvolvimento
 ### Adicionado
 - Estrutura da página de checkout finalizada aguardando conexão com a API de pagamentos
 
 ### Planejado
 - Integração com a API da Pagar.me para processamento de pagamentos
 - Funcionalidades: aprovação, cancelamento e estorno
-
----
-
-## [1.2.0] - Futuro
-
-### Planejado
-- Sistema de login e autenticação para administradores
-- Implementação de testes automatizados
-- Deploy em ambiente cloud com versionamento contínuo
 
 ---
 
