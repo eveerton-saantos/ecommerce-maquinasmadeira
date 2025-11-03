@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste de Registro</title>
+</head>
+<body>
+    <script>
+    async function testRegister() {
+        const response = await fetch('http://localhost:5000/api/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: 'Everton',
+                email: 'everton.test@example.com',
+                password: '123456',
+                role: 'admin'
+            })
+        });
+
+        const data = await response.json();
+        console.log('Resposta do servidor:', data);
+    }
+
+    testRegister();
+    </script>
+</body>
+</html>

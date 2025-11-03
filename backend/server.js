@@ -3,7 +3,11 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
+const authRoutes = require('../backend/routes/authRoutes');
+
 const Produto = require('./models/Produto');
+
+const protectedRoutes =require('./routes/authRoutes');
 
 const app = express();
 app.use(express.static(__dirname + '/pages'));
@@ -19,8 +23,10 @@ mongoose.connect('mongodb://localhost:27017/ecommerce_db', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-.then(() => console.log("🔥 Conectado ao MongoDB"))
-.catch(err => console.error("Erro ao conectar ao MongoDB:", err));
+.then(() => console.log("MongoDB conectado"))
+.catch(err => console.error("Erro ao conectar MongoDB:", err));
+
+app.use('/api', authRoutes);
 
 // Rota teste
 app.get('/', (req, res) => {
@@ -95,3 +101,5 @@ app.delete('/produtos/:id', async (req, res) => {
     await Produto.findByIdAndDelete(id);
     res.json({ message: 'Produto excluído!' });
 });
+
+app.use('/api', protectedRoutes);

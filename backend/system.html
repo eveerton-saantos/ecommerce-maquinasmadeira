@@ -18,6 +18,15 @@
         <h1 class="title-system">Painel do Administrador</h1>
         <div id="produtos"></div>
 
+        <section class="grid-products-admin">
+            <h2 class="subtitle-system">Produtos Cadastrados</h2>
+
+            <div id="gradeProdutos" class="grade-produtos"></div>
+
+            <div id="paginacao" class="paginacao-container"></div>
+        </section>
+
+
     <section class="admin-panel">
         <h2>Adicionar Novo Produto</h2>
 
@@ -29,7 +38,7 @@
                 <input type="text" id="nome" required>
 
                 <label>Descrição:</label>
-                <textarea id="descricao" rows="3"></textarea>
+                <textarea id="descricao" rows="15"></textarea>
 
                 <label>Imagem (URL):</label>
                 <input type="text" id="imagem" placeholder="link imagem">
@@ -67,104 +76,67 @@
             </fieldset>
             <button type="submit" class="btn-add">Adicionar Produto</button>
         </form>
-    </section>
-
-    <!--<div class="system-container">
-        <h1 class="title-system">Painel do Administrador</h1>
-        <div id="produtos"></div>
-        <h2 class="subtitle-system">Adicionar Novo Produto</h2>
-        <form class="form-product" id="formProduto">
-            <p class="name-category-input">Nome do Produto</p>
-            <input class="input-form-product" type="text" id="nome" required>
-            <p class="name-category-input">Preço</p>
-            <input class="input-form-product" type="number" id="preco" step="0.01" min="0" required>
-            <p class="name-category-input">Frete</p>
-            <input class="input-form-product" type="number" id="frete" step="0.01" min="0" required>
-            <p class="name-category-input">Imagem do produto ("URL")</p>
-            <input class="input-form-product" type="text" id="imagem" required>
-            <div class="div-input-description">
-                <p class="name-category-input">Descrição do produto</p>
-                <textarea id="descricao" class="input-form-product input-form-description" required></textarea>
-                <label>
-                    <input type="checkbox" id="highlight" />
-                    Destacar produto?
-                </label>
-            </div>
-
-            <div class="form-info-product">
-                <label for="codigo">Código do Produto:</label>
-                <input type="text" id="codigo" pattern="[A-Za-z0-9\-]+">
-
-                <label for="estoque">Estoque disponível:</label>
-                <input type="number" id="estoque" min="0" required>
-
-                <label for="voltagem">Voltagem:</label>
-                <select id="voltagem">
-                    <option value="Serlecione"></option>
-                    <option value="127v"></option>
-                    <option value="220v"></option>
-                    <option value="380v"></option>
-                </select>
-
-                <label>
-                    <input type="checkbox" id="express">
-                    Entrega Express
-                </label>
-            </div>
-
-            <div>
-                <button class="button-form-product" type="submit">Adicionar Produto</button>
-            </div>
-        </form>
-    </div> -->
+    </section>>
 
     <div class="system-container">
-    <h2 class="subtitle-system">Editar Produto</h2>
-        <form class="form-edit-product" id="formEdicao" style="display: none;">
-            <input class="input-edit-product" type="hidden" id="produtoId">
-            <p class="name-category-input">Nome do produto</p>
-            <input class="input-edit-product" type="text" id="editNome" placeholder="Nome do Produto" required>
-            <p class="name-category-input">Descrição</p>
-            <textarea id="editDescricao" class="input-form-product input-form-description input-edit-product" placeholder="Descrição" required></textarea>
-            <p class="name-category-input">Preço:</p>
-            <input class="input-edit-product" type="number" id="editPreco" step="0.01" min="0" placeholder="Preço" required>
-            <p class="name-category-input">Frete:</p>
-            <input class="input-edit-product" type="number" id="editFrete" step="0.01" min="0" placeholder="Frete" required>
-            <p class="name-category-input">Imagem do produto ("URL")</p>
-            <input class="input-edit-product" type="text" id="editImagem" placeholder="URL da Imagem" required>
-            <label>
-                <input type="checkbox" id="highlight" />
-                    Destacar produto?
-            </label>
+    <form class="admin-panel admin-panel-edit" id="formEdicao" style="display: none;">
+        <input type="hidden" id="produtoId">
+        <h2 class="subtitle-system">Editar Produto</h2>
 
-            <div class="form-info-product">
-                <label for="codigo">Código do Produto:</label>
-                <input type="text" id="codigo" pattern="[A-Za-z0-9\-]+">
+        <fieldset>
+        <legend>Informações Gerais</legend>
 
-                <label for="estoque">Estoque disponível:</label>
-                <input type="number" id="estoque" min="0" required>
+        <label for="editNome">Nome do produto</label>
+        <input class="input-edit-product" type="text" id="editNome" placeholder="Nome do Produto" required>
 
-                <label for="voltagem">Voltagem:</label>
-                <select id="voltagem" required>
-                    <option value="Serlecione"></option>
-                    <option value="127v"></option>
-                    <option value="220v"></option>
-                    <option value="380v"></option>
-                </select>
+        <label for="editDescricao">Descrição</label>
+        <textarea id="editDescricao" class="input-edit-product" rows="25" placeholder="Descrição" required></textarea>
 
-                <label>
-                    <input type="checkbox" id="express">
-                    Entrega Express
-                </label>
-            </div>
+        <label for="editPreco">Preço</label>
+        <input class="input-edit-product" type="number" id="editPreco" step="0.01" min="0" placeholder="Preço" required>
 
-            <div>
-                <button class="btn-edit-product" type="submit">Salvar Alterações</button>
-                <button class="btn-edit-product" type="button" onclick="cancelarEdicao()">Cancelar</button>
-            </div>
-        </form>
+        <label for="editFrete">Frete</label>
+        <input class="input-edit-product" type="number" id="editFrete" step="0.01" min="0" placeholder="Frete" required>
+
+        <label for="editImagem">Imagem do produto (URL)</label>
+        <input class="input-edit-product" type="text" id="editImagem" placeholder="URL da Imagem" required>
+
+        <label class="checkbox-label">
+            <input type="checkbox" id="highlight">
+            Destacar produto?
+        </label>
+        </fieldset>
+
+        <fieldset>
+        <legend>Informações Técnicas</legend>
+
+        <label for="codigo">Código do Produto</label>
+        <input class="input-edit-product" type="text" id="codigo" pattern="[A-Za-z0-9\-]+">
+
+        <label for="estoque">Estoque disponível</label>
+        <input class="input-edit-product" type="number" id="estoque" min="0" required>
+
+        <label for="voltagem">Voltagem</label>
+        <select class="input-edit-product" id="voltagem" required>
+            <option value="">Selecione</option>
+            <option value="127v">127v</option>
+            <option value="220v">220v</option>
+            <option value="380v">380v</option>
+        </select>
+
+        <label class="checkbox-label">
+            <input type="checkbox" id="express">
+            Entrega Express
+        </label>
+        </fieldset>
+
+        <div class="button-group">
+        <button class="btn-edit-product" type="submit">Salvar Alterações</button>
+        <button class="btn-edit-product cancel-btn" type="button" onclick="cancelarEdicao()">Cancelar</button>
+        </div>
+    </form>
     </div>
-
     <script src="../backend/script.js"></script>
+    <script src="../js/admin.js"></script>
 </body>
 </html>

@@ -38,15 +38,15 @@ a {
 .title-system {
     color: var(--preto);
     font-size: 2em;
-    font-weight: 500;
+    font-weight: bold;
     padding: 1em 2em;
 }
 
 .subtitle-system {
     color: var(--preto);
-    font-size: 1.25em;
+    font-size: 1em;
     font-weight: 500;
-    padding: 1em 2em;
+    padding: 0 1em;
 }
 
 #produtos {
@@ -148,12 +148,12 @@ a {
     border-radius: 8px;
 }
 
-.admin-panel h2 {
+.admin-panel, h2 {
     margin-bottom: 16px;
     color: #333;
 }
 
-.form-product fieldset {
+.form-product, fieldset {
     border: 1px solid #ccc;
     padding: 16px;
     margin-bottom: 16px;
@@ -171,9 +171,9 @@ a {
     font-weight: 500;
 }
 
-.form-product input,
-.form-product select,
-.form-product textarea {
+input,
+select,
+textarea {
     width: 100%;
     padding: 8px;
     margin-top: 4px;
@@ -231,4 +231,63 @@ a {
     border-radius: 12px;
     font-size: 0.75rem;
     font-weight: bold;
+}
+
+
+/*------------------------------------------------------------------*/
+
+.grade-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    padding: 16px;
+}
+
+.card-produto {
+    background-color: var(--branco);
+    border: 1px solid var(--background);
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-produto img {
+    max-height: 120px;
+    object-fit: contain;
+    margin-bottom: 8px;
+}
+
+.card-produto h3 {
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.card-produto .preco {
+    font-weight: bold;
+    color: var(--verde);
+    margin-bottom: 12px;
+}
+
+.card-produto .acoes {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    }
+
+.card-produto .acoes button {
+    font-size: 0.85em;
+    padding: 6px 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: var(--azul);
+    color: var(--branco);
+}
+
+.card-produto .acoes button.danger {
+    background-color: #f44336;
 }
