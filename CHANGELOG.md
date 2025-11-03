@@ -6,6 +6,30 @@ O formato segue os princípios de versionamento semântico: MAJOR.MINOR.PATCH
 
 ---
 
+## [1.4.0] - 2025-11-02
+### Adicionado
+- Sistema completo de autenticação com JWT
+- Rota POST /api/register para criação de usuários com criptografia de senha
+- Rota POST /api/login com validação de credenciais e geração de token JWT
+- Middleware verifyToken.js para proteção de rotas privadas
+- Rota GET /api/dashboard protegida por token, retornando dados do usuário autenticado
+- Páginas frontend: register.html, login.html e dashboard.html
+- Scripts frontend: auth.js e dashboard.js para integração com backend
+- Armazenamento do token JWT no localStorage após login
+- Verificação de sessão no frontend antes de acessar áreas protegidas
+- Botão de logout funcional com remoção de token e redirecionamento
+
+### Alterado
+- Resposta da rota /dashboard ajustada para retornar nome, email e role do usuário em vez do ID
+- Remoção da duplicidade de rotas GET /dashboard no authRoutes.js
+- Ajuste na verificação de token no dashboard.js (correção do if (!token))
+
+### Corrigido
+- Erro OverwriteModelError no Mongoose resolvido com uso de mongoose.models.User
+- Bug de acesso negado à área protegida mesmo com token válido corrigido no frontend
+
+---
+
 ## [1.3.0] - 2025-07-20
 ### Adicionado
 
@@ -73,7 +97,7 @@ O formato segue os princípios de versionamento semântico: MAJOR.MINOR.PATCH
 
 ---
 
-## [1.3.0] - Em desenvolvimento
+## [1.5.0] - Em desenvolvimento
 ### Adicionado
 - Estrutura da página de checkout finalizada aguardando conexão com a API de pagamentos
 
