@@ -17,6 +17,8 @@ Projeto de e-commerce especializado em máquinas e equipamentos de marcenaria. D
   - `product.html`: exibe detalhes do produto com destaque e entrega expressa
   - `cart.html`: carrinho de compras com controle por `localStorage`
   - `checkout.html`: estrutura pronta, aguardando integração de pagamento
+  - `register.html` e `login.html`: sistema de autenticação
+  - `dashboard.html`: área protegida com dados do usuário autenticado
 - Estilos organizados em `/styles`:
   - `style-system.css`, `header.css`, `footer.css`, `product.css`, `cart.css`
 - Recursos visuais em `/assets`: imagens, ícones, screenshots
@@ -28,14 +30,19 @@ Projeto de e-commerce especializado em máquinas e equipamentos de marcenaria. D
 - Arquitetura modular:
   - Modelos em `/models` (`Produto.js`)
   - Lógica principal no `server.js`
+  - Controladores em `/controllers`
+  - Rotas em `/routes`
+  - Middleware de autenticação ( verifyToken.js )
 - Funcionalidades administrativas:
   - CRUD completo de produtos
   - Botões para alternar `highlight` (destaque) e `express` (entrega rápida)
-  - Selo visual exibido diretamente no painel e frontend
+  - Sistema de autenticação com JWT
+  - Proteção de rotas privadas
+  - Retorno personalizado com nome, email e role do usuário
 
 ---
 
-## Integração de Pagamentos _(previsto para versão 1.3.x)_
+## Integração de Pagamentos _(previsto para versão 1.5.x)_
 
 - Página de checkout estruturada
 - Planejada integração com API da **Pagar.me**
@@ -45,13 +52,15 @@ Projeto de e-commerce especializado em máquinas e equipamentos de marcenaria. D
 
 ---
 
-## Funcionalidades Atuais _(versão 1.1.3)_
+## Funcionalidades Atuais _(versão 1.3.0)_
 
 - Carrinho persistente com `localStorage`
 - Navegação dinâmica entre páginas e produtos
 - Exibição de selos visuais `⭐ Destaque` e `🚚 Entrega Expressa`
 - Botões no painel admin com ação toggle para marcações especiais
 - Página individual de produto com carregamento por ID via URL
+- Sistema de login e registro com proteção de sessão
+- Dashboard com dados do usuário autenticado
 
 ---
 
@@ -65,6 +74,9 @@ Projeto de e-commerce especializado em máquinas e equipamentos de marcenaria. D
 | PATCH  | `/produtos/:id`        | Atualização parcial (express/destaque) |
 | PUT    | `/produtos/:id`        | Edição completa de produto          |
 | DELETE | `/produtos/:id`        | Remove produto do banco             |
+| POST   | `/register`            | Cria novo usuário                   |
+| POST   | `/login`               | Autentica usuário e retorna token   |
+| GET    | `dashboard`            | Retorna dados do usuário autenticado |
 
 ---
 
@@ -89,11 +101,11 @@ Projeto de e-commerce especializado em máquinas e equipamentos de marcenaria. D
 
 ## Roadmap & Próximas Etapas
 
- Planejadas para versões `1.3.x`:
+ Planejadas para versões `1.5.x`:
 
 - Finalizar integração de pagamentos (Pagar.me)
 - Adicionar sistema de login para administradores
-- Criar login para usuários finais
+- Criar login para usuários finais com painel de pedidos
 - Implementar painel de produtos em promoção
 - Adicionar lógica de preço promocional:
   - Valor original com traço
