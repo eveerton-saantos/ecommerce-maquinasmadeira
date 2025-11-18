@@ -45,7 +45,7 @@ function carregarProdutos() {
         const container = document.getElementById('lista-pedidos');
         container.innerHTML = '';
 
-        if (pedidos.lenght === 0) {
+        if (pedidos.length === 0) {
             container.innerHTML = '<p>Você ainda não fez nenhum pedido.</p>';
             return;
         }
@@ -71,14 +71,114 @@ function carregarProdutos() {
     });
 }
 
+function carregarListaDesejos() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+    window.location.href = '/login.html';
+    return;
+    }
+
+    fetch('http://localhost:5000/api/lista-desejos', {
+    method: 'GET',
+    headers: {
+        'Authorization': `Bearer ${token}`
+    }
+})
+    .then(res => res.json())
+    .then(data => {
+    const container = document.getElementById('desejos-container');
+    container.innerHTML = ' ';
+
+        if (!data || data.produtos.length === 0) {
+        container.innerHTML = '<p>Você ainda não adicionou produtos à lista de desejos.</p>';
+        return;
+        }
+
+        data.produtos.forEach(produto => {
+        const div = document.createElement('div');
+        div.classList.add('desejo');
+
+        div.innerHTML = `
+            <h3>${produto.nome}</h3>
+            <p>${produto.descricao}</p>
+            <p><strong>Preço:</strong> R$ ${produto.preco.toFixed(2)}</p>
+            <button onclick="removerDesejo('${produto._id}')">Remover</button>
+        `;
+
+        container.appendChild(div);
+        });
+    })
+    .catch(err => {
+        console.error('Erro ao carregar lista de desejos:', err);
+    });
+}
+
+function removerDesejo(produtoId) {
+    const token = localStorage.getItem('token');
+
+    fetch(`http://localhost:5000/api/lista-desejos/${produtoId}`, {
+    method: 'DELETE',
+    headers: {
+        'Authorization': `Bearer ${token}`
+    }
+})
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+        carregarListaDesejos(); // Atualiza a lista
+    })
+    .catch(err => {
+        console.error('Erro ao remover produto:', err);
+    });
+}
+
+function carregarPerfil() {
+    const token = localStorage.getItem('token');
+
+    fetch('http://localhost:5000/api/me', {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(res => res.json())
+    .then(user => {
+        document.getElementById('nome').value = user.name;
+        document.getElementById('email').value = user.email;
+    })
+    .catch(err => console.log('Erro ao carregar perfil: ', err));
+}
+
 function mostrarSecao (id) {
     document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
     document.getElementById(id).style.display = 'block';
 
-    if (id === 'meus-pedidos') {
-        carregarProdutos();
-    }
+    if (id === 'lista-desejos') carregarListaDesejos();
+    if (id === 'meus-pedidos') carregarProdutos();
+    if (id === 'perfil') carregarPerfil();
 }
+
+document.getElementById('form-perfil').addEventListener('submit', function (e) {
+e.preventDefault();
+
+const token = localStorage.getItem('token');
+const name = document.getElementById('nome').value;
+const email = document.getElementById('email').value;
+
+fetch('http://localhost:5000/api/me', {
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ name, email })
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+    })
+    .catch(err => console.error('Erro ao atualizar perfil:', err));
+});
+
 
 document.getElementById('logoutBtn').addEventListener('click', () => {
     localStorage.removeItem('token');

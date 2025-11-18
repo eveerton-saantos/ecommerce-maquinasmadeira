@@ -10,11 +10,15 @@ const jwtSecret = process.env.JWT_SECRET;
 
 const pedidosRoutes = require('./routes/pedidoRoutes');
 const app = express();
+const ListaDesejosRoutes = require('./routes/listaDesejosRoutes')
+const userRoutes = require('./routes/userRoutes');
 
 app.use(express.static(__dirname + '/pages'));
 app.use(express.json());
 app.use(cors());
 app.use('/api', pedidosRoutes);
+app.use('/api', ListaDesejosRoutes);
+app.use('/api', userRoutes);
 
 app.get('/product.html', (req, res) => {
     res.sendFile(__dirname + './product.html');
