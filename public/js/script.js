@@ -1,7 +1,7 @@
 let carrinho = [];
 
 async function carregarProdutos() {
-    const response = await fetch('http://localhost:5000/produtos');
+    const response = await fetch('http://localhost:5000/api/produtos');
     const produtos = await response.json();
 
     const produtosContainer = document.getElementById('listaProdutos');

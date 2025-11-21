@@ -40,7 +40,7 @@ function carregarCarrinho() {
     document.addEventListener('DOMContentLoaded', carregarCarrinho);
 
 function atualizarCarrinho() {
-    const carrinhoContainer = document.getElementById('carrinhoLista'); // ✅ Ajuste para o nome correto
+    const carrinhoContainer = document.getElementById('carrinhoLista');
 
     if (!carrinhoContainer) {
         console.error("Erro: Elemento 'carrinhoLista' não encontrado! Verifique o HTML.");

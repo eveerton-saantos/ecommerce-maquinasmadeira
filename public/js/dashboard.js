@@ -4,7 +4,7 @@ if (!token) {
     alert('Você precisa estar logado para acessar esta página.');
     window.location.href = 'login.html';
 } else {
-    fetch('http://localhost:5000/api/dashboard', {
+    fetch('http://localhost:5000/api/auth/dashboard', {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -34,7 +34,7 @@ function carregarProdutos() {
         return;
     }
 
-    fetch('http://localhost:5000/api/meus-pedidos', {
+    fetch('http://localhost:5000/api/pedidos/meus-pedidos', {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -78,7 +78,7 @@ function carregarListaDesejos() {
     return;
     }
 
-    fetch('http://localhost:5000/api/lista-desejos', {
+    fetch('http://localhost:5000/api/lista-desejos/lista-desejos', {
     method: 'GET',
     headers: {
         'Authorization': `Bearer ${token}`
@@ -116,7 +116,7 @@ function carregarListaDesejos() {
 function removerDesejo(produtoId) {
     const token = localStorage.getItem('token');
 
-    fetch(`http://localhost:5000/api/lista-desejos/${produtoId}`, {
+    fetch(`http://localhost:5000/api/lista-desejos/lista-desejos/${produtoId}`, {
     method: 'DELETE',
     headers: {
         'Authorization': `Bearer ${token}`
@@ -135,7 +135,7 @@ function removerDesejo(produtoId) {
 function carregarPerfil() {
     const token = localStorage.getItem('token');
 
-    fetch('http://localhost:5000/api/me', {
+    fetch('http://localhost:5000/api/auth/dashboard', {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -164,7 +164,7 @@ const token = localStorage.getItem('token');
 const name = document.getElementById('nome').value;
 const email = document.getElementById('email').value;
 
-fetch('http://localhost:5000/api/me', {
+fetch('http://localhost:5000/api/auth/dashboard', {
     method: 'PUT',
     headers: {
         'Content-Type': 'application/json',

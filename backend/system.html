@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin</title>
-    <link rel="stylesheet" href="../styles/reset.css">
-    <link rel="stylesheet" href="../styles/style-system.css">
+    <link rel="stylesheet" href="../public/css/reset.css">
+    <link rel="stylesheet" href="../public/css/style-system.css">
 </head>
 <body>
     <header class="header">
@@ -14,15 +14,31 @@
         </div>
     </header>
 
-    <div class="system-container">
-        <h1 class="title-system">Painel do Administrador</h1>
-        <div id="produtos"></div>
+    <div id="modal-produto" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h2 id="modal-titulo">Editar Produto</h2>
+            <form id="form-produto">
+                <input type="hidden" id="produto-id" />
+                <label>Nome:</label>
+                <input type="text" id="produto-nome" required />
+                <label>Descrição:</label>
+                <textarea id="produto-descricao" required></textarea>
+                <label>Preço:</label>
+                <input type="number" id="produto-preco" step="0.01" required />
+                <button type="submit">Salvar</button>
+                <button type="button" onclick="cancelarEdicao()">Cancelar</button>
+            </form>
+        </div>
+    </div>
 
+
+    <div class="system-container">     
         <section class="grid-products-admin">
             <h2 class="subtitle-system">Produtos Cadastrados</h2>
 
             <div id="gradeProdutos" class="grade-produtos"></div>
-
+            <div id="produtos"></div>
             <div id="paginacao" class="paginacao-container"></div>
         </section>
 
@@ -76,7 +92,7 @@
             </fieldset>
             <button type="submit" class="btn-add">Adicionar Produto</button>
         </form>
-    </section>>
+    </section>
 
     <div class="system-container">
     <form class="admin-panel admin-panel-edit" id="formEdicao" style="display: none;">
@@ -137,6 +153,6 @@
     </form>
     </div>
     <script src="../backend/script.js"></script>
-    <script src="../js/admin.js"></script>
+    <script src="../public/js/adminPanel.js"></script>
 </body>
 </html>

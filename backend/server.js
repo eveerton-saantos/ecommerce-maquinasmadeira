@@ -1,105 +1,63 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
-const authRoutes = require('../backend/routes/authRoutes');
-const Produto = require('./models/Produto');
-const protectedRoutes =require('./routes/authRoutes');
-const jwtSecret = process.env.JWT_SECRET;
-
-const pedidosRoutes = require('./routes/pedidoRoutes');
 const app = express();
-const ListaDesejosRoutes = require('./routes/listaDesejosRoutes')
-const userRoutes = require('./routes/userRoutes');
+const PORT = process.env.PORT || 5000;
 
+// Middlewares
+app.use('/public', express.static(path.join(__dirname, 'Public')));
 app.use(express.static(__dirname + '/pages'));
 app.use(express.json());
 app.use(cors());
-app.use('/api', pedidosRoutes);
-app.use('/api', ListaDesejosRoutes);
-app.use('/api', userRoutes);
 
+// Rotas
+const authRoutes = require('./routes/authRoutes');
+const produtosRoutes = require('./routes/produtosRoutes');
+const pedidosRoutes = require('./routes/pedidoRoutes');
+const ListaDesejosRoutes = require('./routes/listaDesejosRoutes')
+const userRoutes = require('./routes/userRoutes');
+
+// const jwtSecret = process.env.JWT_SECRET;
+app.use('/api/auth', authRoutes);
+app.use('/api/produtos', produtosRoutes);
+app.use('/api/pedidos', pedidosRoutes);
+app.use('/api/lista-desejos', ListaDesejosRoutes);
+app.use('/api/usuarios', userRoutes);
+
+// Página estática
 app.get('/product.html', (req, res) => {
-    res.sendFile(__dirname + './product.html');
+    res.sendFile(path.join(__dirname, 'pages', 'product.html'));
 });
 
+// Fallback
+app.get('/', (req, res) => {
+    res.send("API rodando!");
+});
+
+// Fallback Rotas inexistentes
+app.use((req, res) => {
+    res.status(404).json({ error: 'Rota não encontrada.'});
+});
+
+// Middleware de erro interno
+app.use((err, req, res, next) => {
+    console.error('Erro interno:', err);
+    res.status(500).json({ error: 'Erro interno! Rota não encontrada.' });
+});
+
+app.use((req, res, next) => {
+    console.log(`[${req.method}] ${req.url}`);
+    next();
+});
+
+// Conexão com o MongoDB
 mongoose.connect('mongodb://localhost:27017/ecommerce_db', {
 })
 .then(() => console.log("MongoDB conectado"))
 .catch(err => console.error("Erro ao conectar MongoDB:", err));
 
-app.use('/api', authRoutes);
-
-app.get('/', (req, res) => {
-    res.send("🚀 API rodando!");
-});
-
-const PORT = process.env.PORT || 5000;
+// Inicialização
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
-
-app.get('/produtos', async (req, res) => {
-    try {
-        const produtos = await Produto.find();
-        res.json(produtos);
-    } catch (error) {
-        console.error("Erro ao buscar produtos:", error);
-        res.status(500).json({ error: "Erro ao buscar produtos." });
-    }
-});
-
-app.get('/produto/:id', async (req, res) => {
-    try {
-        const produto = await Produto.findById(req.params.id);
-        if (!produto) {
-        return res.status(404).json({ error: 'Produto não encontrado!' });
-        }
-        res.json(produto);
-    } catch (error) {
-        console.error('Erro ao buscar produto:', error);
-        res.status(500).json({ error: 'Erro ao buscar produto.' });
-    }
-});
-
-app.put('/produtos/:id', async (req, res) => {
-    const { id } = req.params;
-    const { nome, descricao, preco, frete, imagem, express, highlight } = req.body;
-
-    const produtoAtualizado = await Produto.findByIdAndUpdate(id, { nome, descricao, preco, frete, imagem, express, highlight }, { new: true });
-    
-    res.json({ message: 'Produto atualizado!', produto: produtoAtualizado });
-});
-
-app.patch('/produtos/:id', async (req, res) => {
-    const { id } = req.params;
-    const update = req.body;
-
-    try {
-        const produtoAtualizado = await Produto.findByIdAndUpdate(id, update, { new: true });
-        res.json({ message: 'Produto atualizado com sucesso (PATCH)', produto: produtoAtualizado });
-    } catch (error) {
-        console.error('Erro ao atualizar produto:', error);
-        res.status(500).json({ error: 'Erro ao atualizar o produto.' });
-    }
-});
-
-app.post('/produtos', async (req, res) => {
-    const { nome, descricao, preco, frete, imagem, highlight, express, codigo, voltagem, estoque } = req.body;
-
-    try {
-        const novoProduto = new Produto({ nome, descricao, preco, frete, imagem, highlight, express, codigo, voltagem, estoque });
-        await novoProduto.save();
-        res.json({ message: 'Produto criado!', produto: novoProduto });
-    } catch (error) {
-        console.error('Erro ao salvar produto:', error);
-        res.status(500).json({ error: 'Erro ao salvar produto' });
-    }
-});
-
-app.delete('/produtos/:id', async (req, res) => {
-    const { id } = req.params;
-    await Produto.findByIdAndDelete(id);
-    res.json({ message: 'Produto excluído!' });
-});
-
-app.use('/api', protectedRoutes);

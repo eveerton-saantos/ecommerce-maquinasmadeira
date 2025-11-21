@@ -10,7 +10,7 @@ async function carregarProduto() {
     }
 
     try {
-        const response = await fetch(`http://localhost:5000/produto/${idProduto}`);
+        const response = await fetch(`http://localhost:5000/api/produtos/${idProduto}`);
         const data = await response.json();
     
         if (data.highlight) {
@@ -20,13 +20,13 @@ async function carregarProduto() {
             document.querySelector('.info-product').prepend(destaqueTag);
         }
 
-        console.log("API retornou:", data); // ✅ Debug para verificar o conteúdo
+        console.log("API retornou:", data);
 
         if (!data || !data._id) {
             throw new Error("Erro ao carregar produto! Dados inválidos.");
         }
 
-        produtoAtual = data; // ✅ Agora garantimos que `produtoAtual` foi preenchido corretamente
+        produtoAtual = data;
 
         document.getElementById("produtoNome").innerText = produtoAtual.nome;
         document.getElementById("produtoImagem").src = produtoAtual.imagem;
