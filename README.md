@@ -1,6 +1,6 @@
 # 🛠️ E-commerce Máquinas Madeira
 
-![Versão](https://img.shields.io/badge/versão-1.1.3-blue)
+![Versão](https://img.shields.io/badge/versão-1.4.0-blue)
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 ![Licença](https://img.shields.io/badge/licença-MIT-green)
 
@@ -42,16 +42,6 @@ Projeto de e-commerce especializado em máquinas e equipamentos de marcenaria. D
 
 ---
 
-## Integração de Pagamentos _(previsto para versão 1.5.x)_
-
-- Página de checkout estruturada
-- Planejada integração com API da **Pagar.me**
-- Funcionalidades futuras:
-  - Processamento de pagamentos
-  - Cancelamento, estorno e atualização de status
-
----
-
 ## Funcionalidades Atuais _(versão 1.3.0)_
 
 - Carrinho persistente com `localStorage`
@@ -60,7 +50,11 @@ Projeto de e-commerce especializado em máquinas e equipamentos de marcenaria. D
 - Botões no painel admin com ação toggle para marcações especiais
 - Página individual de produto com carregamento por ID via URL
 - Sistema de login e registro com proteção de sessão
-- Dashboard com dados do usuário autenticado
+- Dashboard com:
+- - Dados do usuário autenticado
+  - Lista de pedidos
+  - Lista de Desejos
+  - Formulário para atualizar nome e email
 
 ---
 
