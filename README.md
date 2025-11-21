@@ -42,11 +42,11 @@ Projeto de e-commerce especializado em máquinas e equipamentos de marcenaria. D
 
 ---
 
-## Funcionalidades Atuais _(versão 1.3.0)_
+## Funcionalidades Atuais _(versão 1.4.0)_
 
 - Carrinho persistente com `localStorage`
 - Navegação dinâmica entre páginas e produtos
-- Exibição de selos visuais `⭐ Destaque` e `🚚 Entrega Expressa`
+- Exibição de selos visuais `Destaque` e `Entrega Expressa`
 - Botões no painel admin com ação toggle para marcações especiais
 - Página individual de produto com carregamento por ID via URL
 - Sistema de login e registro com proteção de sessão
@@ -95,17 +95,22 @@ Projeto de e-commerce especializado em máquinas e equipamentos de marcenaria. D
 
 ## Roadmap & Próximas Etapas
 
- Planejadas para versões `1.5.x`:
+ Planejamento para futuras versões:
 
 - Finalizar integração de pagamentos (Pagar.me)
 - Adicionar sistema de login para administradores
-- Criar login para usuários finais com painel de pedidos
 - Implementar painel de produtos em promoção
 - Adicionar lógica de preço promocional:
   - Valor original com traço
   - Valor com desconto + porcentagem de economia
 - Avaliação por usuários autenticados
 - Testes automatizados e deploy em ambiente cloud
+- Sistema de fretamento dos produtos
+- Variações de produtos como:
+  - Cor
+  - Tensão
+  - Voltagem
+- Estilização dos componentes UI
 
 ---
 
