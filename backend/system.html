@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin</title>
+    <title>Painel Administrativo</title>
+
     <link rel="stylesheet" href="../public/css/reset.css">
     <link rel="stylesheet" href="../public/css/style-system.css">
+    <link rel="stylesheet" href="../public/css-admin/list-product.css">
 </head>
 <body>
     <header class="header">
@@ -14,145 +16,158 @@
         </div>
     </header>
 
-    <div id="modal-produto" class="modal" style="display: none;">
+    <div class="admin-container">
+        <aside class="sidebar">
+            <h2>Admin Panel</h2>
+            <nav>
+            <ul>
+                <li><a href="#" data-section="dashboard">Dashboard</a></li>
+                <li><a href="#" data-section="add-product">Adicionar Produto</a></li>
+                <li><a href="#" data-section="products">Produtos Adicionados</a></li>
+                <li><a href="#" data-section="categories">Categorias</a></li>
+                <li><a href="#" data-section="users">Usuários</a></li>
+            </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section id="dashboard" class="section active">
+            <h1>Dashboard</h1>
+            <p>Resumo geral do sistema...</p>
+            </section>
+
+            <section id="add-product" class="section">
+                <h1>Adicionar Produto</h1>
+                <form id="formProduto" class="form-product">
+                    <label>Nome do Produto:</label>
+                    <input type="text" id="produtoNome" required>
+                    
+                    <label>Descrição:</label>
+                    <textarea id="produtoDescricao" rows="10"></textarea>
+                    
+                    <label>Imagem (URL):</label>
+                    <input type="text" id="produtoImagem" placeholder="Link Imagem">
+                    
+                    <label>Código:</label>
+                    <input type="text" id="produtoCodigo" pattern="[A-Za-z0-9\-]+" placeholder="MDF-X120">
+
+                    <label>Preço:</label>
+                    <input type="number" id="produtoPreco" step="0.01" min="0" required>
+                    
+                    <label>Frete:</label>
+                    <input type="number" id="produtoFrete" step="0.01" min="0" required>
+                    
+                    <label>Estoque:</label>
+                    <input type="number" id="produtoEstoque" min="0" required>
+                    
+                    <label>Voltagem:</label>
+                    <select id="produtoVoltagem" required>
+                        <option value="">Selecione</option>
+                        <option value="127v">127v</option>
+                        <option value="220v">220v</option>
+                        <option value="380v">380v</option>
+                    </select>
+
+                    <label><input type="checkbox" id="highlightAdd"> Destaque</label>
+                    <label><input type="checkbox" id="expressAdd"> Entrega Expressa</label>
+
+                    <button type="submit">Adicionar Produto</button>
+                </form>
+            </section>
+
+            <section id="products" class="section">
+                <h1>Produtos Adicionados</h1>
+                <table class="tabela-produtos">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Imagem</th>
+                            <th>Nome do Produto</th>
+                            <th>Preço</th>
+                            <th>Destaque</th>
+                            <th>Express</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gradeProdutos"></tbody>
+                </table>
+                <div id="paginacao"></div>
+            </section>
+
+            <section id="categories" class="section">
+                <h1>Categorias</h1>
+                <p>Gerencie suas categorias aqui...</p>
+            </section>
+
+            <section id="users" class="section">
+                <h1>Usuários</h1>
+                <p>Gerencie usuários do sistema...</p>
+            </section>
+        </main>
+    </div>
+
+
+    <template id="template-linha-produto">
+        <tr class="linha-produto">
+            <td class="produto-indice"></td>
+            <td><img class="produto-imagem" src="" alt="" width="60"></td>
+            <td class="produto-nome"></td>
+            <td class="produto-preco"></td>
+            <td class="produto-destaque"></td>
+            <td class="produto-express"></td>
+            <td class="produto-acoes">
+                <button class="btn-destaque"></button>
+                <button class="btn-express"></button>
+                <button class="btn-editar">✏️</button>
+                <button class="btn-excluir danger">🗑️</button>
+            </td>
+        </tr>
+    </template>
+
+    <div id="modal-produto" style="display:none;">
         <div class="modal-content">
-            <span class="close" onclick="fecharModal()">&times;</span>
-            <h2 id="modal-titulo">Editar Produto</h2>
-            <form id="form-produto">
-                <input type="hidden" id="produto-id" />
-                <label>Nome:</label>
-                <input type="text" id="produto-nome" required />
-                <label>Descrição:</label>
-                <textarea id="produto-descricao" required></textarea>
-                <label>Preço:</label>
-                <input type="number" id="produto-preco" step="0.01" required />
-                <button type="submit">Salvar</button>
-                <button type="button" onclick="cancelarEdicao()">Cancelar</button>
+            <h2>Editar Produto</h2>
+            <form id="formEdicao">
+            <input type="hidden" id="produtoId">
+
+            <label>Nome:</label>
+            <input type="text" id="editNome">
+
+            <label>Descrição:</label>
+            <textarea id="editDescricao"></textarea>
+
+            <label>Preço:</label>
+            <input type="number" id="editPreco" step="0.01">
+
+            <label>Frete:</label>
+            <input type="number" id="editFrete" step="0.01">
+
+            <label>Imagem (URL):</label>
+            <input type="text" id="editImagem">
+
+            <label>Estoque:</label>
+            <input type="number" id="editEstoque">
+
+            <label>Voltagem:</label>
+            <select id="editVoltagem">
+                <option value="">Selecione</option>
+                <option value="127v">127v</option>
+                <option value="220v">220v</option>
+                <option value="380v">380v</option>
+            </select>
+
+            <label><input type="checkbox" id="highlightEdit"> Destaque</label>
+            <label><input type="checkbox" id="expressEdit"> Entrega Expressa</label>
+
+            <button type="submit">Salvar</button>
+            <button type="button" onclick="fecharModal()">Cancelar</button>
             </form>
         </div>
     </div>
 
 
-    <div class="system-container">     
-        <section class="grid-products-admin">
-            <h2 class="subtitle-system">Produtos Cadastrados</h2>
+    <div id="toast" class="toast"></div>
 
-            <div id="gradeProdutos" class="grade-produtos"></div>
-            <div id="produtos"></div>
-            <div id="paginacao" class="paginacao-container"></div>
-        </section>
-
-
-    <section class="admin-panel">
-        <h2>Adicionar Novo Produto</h2>
-
-        <form id="formProduto" class="form-product">
-            <fieldset>
-                <legend>Informações Básicas</legend>
-
-                <label>Nome do Produto:</label>
-                <input type="text" id="nome" required>
-
-                <label>Descrição:</label>
-                <textarea id="descricao" rows="15"></textarea>
-
-                <label>Imagem (URL):</label>
-                <input type="text" id="imagem" placeholder="link imagem">
-
-                <label>Código do Produto:</label>
-                <input type="text" id="codigo" pattern="[A-Za-z0-9\-]+" placeholder="Ex: MDF-X120">
-            </fieldset>
-
-            <fieldset>
-                <legend>Dados Técnicos</legend>
-
-                <label>Preço:</label>
-                <input type="number" id="preco" step="0.01" min="0" required>
-
-                <label>Frete:</label>
-                <input type="number" id="frete" step="0.01" min="0" required>
-
-                <label>Estoque:</label>
-                <input type="number" id="estoque" min="0" required>
-
-                <label>Voltagem:</label>
-                <select id="voltagem" required>
-                    <option value="">Selecione</option>
-                    <option value="127v">127v</option>
-                    <option value="220v">220v</option>
-                    <option value="380v">380v</option>
-                </select>
-            </fieldset>
-
-            <fieldset>
-                <legend>Logística</legend>
-
-                <label><input type="checkbox" id="highlight"> Destaque o produto</label>
-                <label><input type="checkbox" id="express"> Entrega expressa</label>
-            </fieldset>
-            <button type="submit" class="btn-add">Adicionar Produto</button>
-        </form>
-    </section>
-
-    <div class="system-container">
-    <form class="admin-panel admin-panel-edit" id="formEdicao" style="display: none;">
-        <input type="hidden" id="produtoId">
-        <h2 class="subtitle-system">Editar Produto</h2>
-
-        <fieldset>
-        <legend>Informações Gerais</legend>
-
-        <label for="editNome">Nome do produto</label>
-        <input class="input-edit-product" type="text" id="editNome" placeholder="Nome do Produto" required>
-
-        <label for="editDescricao">Descrição</label>
-        <textarea id="editDescricao" class="input-edit-product" rows="25" placeholder="Descrição" required></textarea>
-
-        <label for="editPreco">Preço</label>
-        <input class="input-edit-product" type="number" id="editPreco" step="0.01" min="0" placeholder="Preço" required>
-
-        <label for="editFrete">Frete</label>
-        <input class="input-edit-product" type="number" id="editFrete" step="0.01" min="0" placeholder="Frete" required>
-
-        <label for="editImagem">Imagem do produto (URL)</label>
-        <input class="input-edit-product" type="text" id="editImagem" placeholder="URL da Imagem" required>
-
-        <label class="checkbox-label">
-            <input type="checkbox" id="highlight">
-            Destacar produto?
-        </label>
-        </fieldset>
-
-        <fieldset>
-        <legend>Informações Técnicas</legend>
-
-        <label for="codigo">Código do Produto</label>
-        <input class="input-edit-product" type="text" id="codigo" pattern="[A-Za-z0-9\-]+">
-
-        <label for="estoque">Estoque disponível</label>
-        <input class="input-edit-product" type="number" id="estoque" min="0" required>
-
-        <label for="voltagem">Voltagem</label>
-        <select class="input-edit-product" id="voltagem" required>
-            <option value="">Selecione</option>
-            <option value="127v">127v</option>
-            <option value="220v">220v</option>
-            <option value="380v">380v</option>
-        </select>
-
-        <label class="checkbox-label">
-            <input type="checkbox" id="express">
-            Entrega Express
-        </label>
-        </fieldset>
-
-        <div class="button-group">
-        <button class="btn-edit-product" type="submit">Salvar Alterações</button>
-        <button class="btn-edit-product cancel-btn" type="button" onclick="cancelarEdicao()">Cancelar</button>
-        </div>
-    </form>
-    </div>
-    <script src="../backend/script.js"></script>
-    <script src="../public/js/adminPanel.js"></script>
+    <script src="../public/js/adminMod.js"></script>
 </body>
 </html>

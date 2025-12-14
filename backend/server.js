@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
+const adminPanelRoutes = require('./adminPanel');
 require('dotenv').config();
 
 const app = express();
@@ -12,6 +13,11 @@ app.use('/public', express.static(path.join(__dirname, 'Public')));
 app.use(express.static(__dirname + '/pages'));
 app.use(express.json());
 app.use(cors());
+
+app.use((req, res, next) => {
+    console.log(`[${req.method}] ${req.url}`);
+    next();
+});
 
 // Rotas
 const authRoutes = require('./routes/authRoutes');
@@ -26,13 +32,14 @@ app.use('/api/produtos', produtosRoutes);
 app.use('/api/pedidos', pedidosRoutes);
 app.use('/api/lista-desejos', ListaDesejosRoutes);
 app.use('/api/usuarios', userRoutes);
+app.use('/api', adminPanelRoutes);
 
 // Página estática
 app.get('/product.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'pages', 'product.html'));
 });
 
-// Fallback
+// Fallback raíz
 app.get('/', (req, res) => {
     res.send("API rodando!");
 });
@@ -46,11 +53,6 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
     console.error('Erro interno:', err);
     res.status(500).json({ error: 'Erro interno! Rota não encontrada.' });
-});
-
-app.use((req, res, next) => {
-    console.log(`[${req.method}] ${req.url}`);
-    next();
 });
 
 // Conexão com o MongoDB

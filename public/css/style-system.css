@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+@import url(../css-admin/list-product.css);
+
 :root {
     --cinza-claro: #f3f3f3;
     --background: #ccc;
@@ -196,43 +198,27 @@ textarea {
     background-color: #45a049;
 }
 
-.product-express-badge {
-    display: inline-block;
-    background-color: #ff9800;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    margin-bottom: 6px;
-    margin-right: 6px;
-    font-weight: bold;
-}
-
 .badge-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 6px;
+    gap: 5px;
+    margin-bottom: 5px;
 }
 
-.product-highlight-badge {
-    background-color: #4CAF50;
-    color: white;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: bold;
+.badge {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
 }
 
-.product-express-badge {
-    background-color: #ff9800;
-    color: white;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: bold;
+.badge.destaque {
+    background-color: gold;
 }
 
+.badge.express {
+    background-color: dodgerblue;
+}
 
 /*------------------------------------------------------------------*/
 
@@ -241,17 +227,6 @@ textarea {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 16px;
     padding: 16px;
-}
-
-.card-produto {
-    background-color: var(--branco);
-    border: 1px solid var(--background);
-    border-radius: 8px;
-    padding: 12px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.05);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
 }
 
 .card-produto img {
@@ -292,15 +267,6 @@ textarea {
     background-color: #f44336;
 }
 
-.modal {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: flex; justify-content: center; align-items: center;
-    z-index: 999;
-}
-
 .modal-content {
     background: white;
     padding: 2rem;
@@ -309,9 +275,128 @@ textarea {
     position: relative;
 }
 
+#modal-produto {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: flex;
+}
+
+#modal-produto .modal-content {
+    background: #fff;
+    padding: 2em;
+    border-radius: 0.5em;
+    width: 600px;
+    max-width: 90%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+#modal-produto .modal-content input,
+#modal-produto .modal-content textarea,
+#modal-produto .modal-content select {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+}
+
 .close {
     position: absolute;
     top: 10px; right: 15px;
     font-size: 24px;
     cursor: pointer;
+}
+
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    bottom: 30px;
+    font-size: 14px;
+}
+
+.toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from { bottom: 0; opacity: 0; }
+    to { bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+    from { bottom: 30px; opacity: 1; }
+    to { bottom: 0px; opacity: 0;}
+}
+
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background: #1e1e2f;
+    color: #fff;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background: #3a3a5a;
+}
+
+/* Conteúdo principal */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background: #f4f4f9;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
 }

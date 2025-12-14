@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+
+
+.tabela-produtos {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 15px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.tabela-produtos thead tr {
+    background-color: #f5f5f5;
+    border-bottom: 2px solid #ddd;
+}
+
+.tabela-produtos tbody tr {
+    
+}
+
+.tabela-produtos th,
+.tabela-produtos td {
+    padding: 12px 10px;
+    text-align: left;
+}
+
+.tabela-produtos th:nth-child(1),
+.tabela-produtos td:nth-child(1) { width: 3%; }   /* Índice */
+.tabela-produtos th:nth-child(2),
+.tabela-produtos td:nth-child(2) { width: 8%; }  /* Nome */
+.tabela-produtos th:nth-child(3),
+.tabela-produtos td:nth-child(3) { width: 25%; }  /* Preço */
+.tabela-produtos th:nth-child(4),
+.tabela-produtos td:nth-child(4) { width: 10%; }  /* Destaque */
+.tabela-produtos th:nth-child(5),
+.tabela-produtos td:nth-child(5) { width: 10%; }  /* Express */
+.tabela-produtos th:nth-child(6),
+.tabela-produtos td:nth-child(6) { width: 10%; }  /* Ações */
+
+.linha-produto:hover {
+    background-color: #f9f9f9;
+}
+
+.produto-imagem {
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.produto-acoes button {
+    min-width: 5em;
+}
+
+.produto-acoes .btn-destaque {
+    background-color: gold;
+}
+
+.produto-acoes .btn-express {
+    background-color: dodgerblue;
+    color: #fff;
+}
+
+.produto-acoes .btn-editar {
+    background-color: #ccc;
+}
+
+.produto-acoes .btn-excluir {
+    background-color: crimson;
+    color: #fff;
+}
